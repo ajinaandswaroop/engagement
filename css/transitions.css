@@ -1,0 +1,254 @@
+/* ========================================
+   CINEMATIC SCROLL TRANSITIONS
+   CLEAN VERSION 1
+
+   Scroll-position driven.
+   No IntersectionObserver.
+   No scroll snapping.
+   No wheel control.
+======================================== */
+
+
+/* ========================================
+   OPENING IS NOT PART OF THIS SYSTEM
+======================================== */
+
+#opening,
+#opening * {
+    animation: none !important;
+}
+
+
+/* ========================================
+   ANIMATED ELEMENT
+======================================== */
+
+.scroll-element {
+
+    /*
+     * These variables are continuously
+     * updated by transitions.js.
+     */
+
+    --scroll-opacity: 1;
+    --scroll-y: 0px;
+    --scroll-scale: 1;
+    --scroll-blur: 0px;
+
+
+    opacity:
+        var(--scroll-opacity);
+
+
+    transform:
+        translate3d(0,
+            var(--scroll-y),
+            0) scale(var(--scroll-scale));
+
+
+    filter:
+        blur(var(--scroll-blur));
+
+
+    /*
+     * The browser should not animate
+     * between values.
+
+     * JavaScript is controlling these
+     * values directly from scroll position.
+     */
+
+    will-change:
+        transform,
+        opacity,
+        filter;
+}
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .scroll-element {
+
+        --scroll-opacity: 1 !important;
+        --scroll-y: 0px !important;
+        --scroll-scale: 1 !important;
+        --scroll-blur: 0px !important;
+
+        transform: none !important;
+
+        filter: none !important;
+
+        will-change: auto !important;
+    }
+}
+
+/* ========================================
+   ELEMENT-BY-ELEMENT SCROLL ANIMATION
+======================================== */
+
+.element-animate {
+
+    opacity: 0;
+
+    transform:
+        translateY(45px) scale(0.98);
+
+    filter: blur(10px);
+
+    transition:
+        opacity 0.9s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+
+        transform 1s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+
+        filter 1s cubic-bezier(0.16,
+            1,
+            0.3,
+            1);
+}
+
+
+.element-animate.element-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0) scale(1);
+
+    filter: blur(0);
+}
+
+/* ========================================
+   OPENING PAGE — ALWAYS CLEAR
+======================================== */
+
+#opening .element-animate {
+
+    opacity: 1 !important;
+
+    transform: none !important;
+
+    filter: none !important;
+
+    transition: none !important;
+}
+
+
+
+/* ========================================
+   COUNTDOWN ANIMATION
+======================================== */
+
+.countdown-item {
+
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    filter: blur(8px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(0.16,
+            1,
+            0.3,
+            1),
+        filter 0.9s ease;
+}
+
+
+.scroll-visible .countdown-item {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    filter: blur(0);
+}
+
+#countdown .countdown-item:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+#countdown .countdown-item:nth-child(2) {
+    transition-delay: 0.12s;
+}
+
+#countdown .countdown-item:nth-child(3) {
+    transition-delay: 0.19s;
+}
+
+#countdown .countdown-item:nth-child(4) {
+    transition-delay: 0.26s;
+}
+
+.calendar-day {
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    filter: blur(5px);
+
+    transition:
+        opacity 0.45s ease,
+        transform 0.5s ease,
+        filter 0.5s ease;
+}
+
+
+.scroll-visible .calendar-day {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    filter: blur(0);
+}
+
+.calendar-day:nth-child(1) {
+    transition-delay: 0.02s;
+}
+
+.calendar-day:nth-child(2) {
+    transition-delay: 0.04s;
+}
+
+.calendar-day:nth-child(3) {
+    transition-delay: 0.06s;
+}
+
+.calendar-day:nth-child(4) {
+    transition-delay: 0.08s;
+}
+
+.calendar-day:nth-child(5) {
+    transition-delay: 0.10s;
+}
+
+/* ========================================
+   SCROLL TRANSITION — SOFTER BLUR
+   Animation remains unchanged
+======================================== */
+
+.scroll-element {
+    filter:
+        blur(
+            min(
+                var(--scroll-blur),
+                -10px
+            )
+        );
+}

@@ -1,0 +1,8407 @@
+/* ========================================
+   RESET
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--page-gradient);
+    background-attachment: fixed;
+
+    color: var(--primary);
+
+    font-family: var(--body-font);
+
+    line-height: 1.6;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   OPENING PAGE SCROLL LOCK
+======================================== */
+
+body.invitation-locked {
+    height: 100svh;
+
+    overflow: hidden;
+
+    overscroll-behavior: none;
+}
+
+
+/* Prevent touch scrolling while opening */
+
+body.invitation-locked #opening {
+    touch-action: none;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* ========================================
+   MAIN INVITATION
+======================================== */
+
+#invitation {
+    width: 100%;
+    overflow: hidden;
+}
+
+
+/* ========================================
+   COMMON SECTION
+======================================== */
+
+.invitation-section {
+    width: 100%;
+
+    min-height: 78svh;
+
+    padding: var(--section-padding);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    background: transparent;
+
+    color: var(--primary);
+}
+
+.invitation-section>* {
+    max-width: var(--content-width);
+}
+
+
+/* ========================================
+   SECTION LABEL
+======================================== */
+
+.section-label,
+.eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--olive);
+}
+
+
+/* ========================================
+   HEADINGS
+======================================== */
+
+h1,
+h2,
+h3 {
+    font-family: var(--heading-font);
+    font-weight: 400;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 4.5rem);
+    line-height: 1.1;
+}
+
+
+/* ========================================
+   OPENING
+======================================== */
+
+#opening {
+    text-align: center;
+}
+
+.opening-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.couple-name {
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+}
+
+.couple-name span {
+    font-style: italic;
+    color: var(--accent);
+}
+
+.opening-date {
+    font-size: 0.85rem;
+    letter-spacing: 0.35em;
+}
+
+.opening-message {
+    max-width: 400px;
+    color: var(--muted);
+}
+
+
+/* ========================================
+   BUTTON
+======================================== */
+
+.invitation-button {
+    margin-top: 20px;
+    padding: 14px 28px;
+
+    color: var(--background);
+
+    border-radius: 0;
+
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+
+    transition: transform var(--transition),
+        background var(--transition);
+}
+
+.invitation-button:hover {
+    transform: translateY(-3px);
+    background: var(--accent);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    :root {
+        --section-padding: 45px 20px;
+    }
+
+    .invitation-section {
+        min-height: 100svh;
+    }
+
+    .couple-name {
+        font-size: clamp(2.8rem, 15vw, 5rem);
+    }
+
+    .opening-message {
+        font-size: 0.9rem;
+    }
+}
+
+/* ========================================
+   OPENING
+======================================== */
+
+#opening {
+
+    position: relative;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+}
+
+
+/* ========================================
+   OPENING CONTENT
+======================================== */
+
+.opening-content {
+
+    position: relative;
+
+    z-index: 10;
+
+}
+
+
+/* ========================================
+   PHOTO
+======================================== */
+
+.opening-photo {
+
+    position: relative;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+}
+
+
+/* ========================================
+   PHOTO FRAME
+======================================== */
+
+.opening-photo-frame {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    border: 1px solid
+        rgba(184, 148, 82, 0.28);
+
+}
+
+
+/* ========================================
+   PHOTO
+======================================== */
+
+.opening-photo-frame img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    opacity: 0.88;
+
+    filter: none !important;
+
+    -webkit-filter: none !important;
+
+}
+
+
+/* ========================================
+   FINAL DESKTOP OPENING
+   TEXT LEFT
+   PHOTO RIGHT
+   COMPLETE COMPOSITION MOVES TOGETHER
+   MOBILE COMPLETELY UNTOUCHED
+======================================== */
+
+@media (min-width: 601px) {
+
+    /* ====================================
+       OPENING CONTAINER
+    ==================================== */
+
+    #opening {
+        position: relative !important;
+
+        width: 100% !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+
+        overflow: hidden !important;
+
+        isolation: isolate !important;
+
+        /* COMPLETE COMPOSITION POSITION */
+        --opening-shift-x: 9vw;
+    }
+
+
+    /* ====================================
+       TEXT AREA
+    ==================================== */
+
+    #opening .opening-content {
+
+        position: absolute !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 68% !important;
+        height: 100vh !important;
+
+        margin: 0 !important;
+
+        padding:
+            5vh
+            3vw
+            5vh
+            3vw !important;
+
+        box-sizing: border-box !important;
+
+        display: flex !important;
+
+        flex-direction: column !important;
+
+        align-items: flex-start !important;
+
+        justify-content: center !important;
+
+        text-align: left !important;
+
+        z-index: 20 !important;
+
+        transform:
+            translateX(var(--opening-shift-x)) !important;
+    }
+
+
+    /* ====================================
+       EYEBROW
+    ==================================== */
+
+    #opening .opening-content .eyebrow {
+
+        width: 100% !important;
+
+        margin:
+            0
+            0
+            3vh
+            0 !important;
+
+        padding: 0 !important;
+
+        text-align: left !important;
+    }
+
+
+    /* ====================================
+       COUPLE NAME
+    ==================================== */
+
+    #opening .opening-content .couple-name {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        text-align: left !important;
+
+        white-space: normal !important;
+
+        overflow: visible !important;
+
+        box-sizing: border-box !important;
+
+        font-size:
+            clamp(
+                4rem,
+                5.5vw,
+                6.5rem
+            ) !important;
+
+        line-height: 0.9 !important;
+
+        letter-spacing: -0.025em !important;
+    }
+
+
+    /* ====================================
+       DATE
+    ==================================== */
+
+    #opening .opening-content .opening-date {
+
+        width: 100% !important;
+
+        margin:
+            5vh
+            0
+            0
+            0 !important;
+
+        padding: 0 !important;
+
+        text-align: left !important;
+    }
+
+
+    /* ====================================
+       MESSAGE
+    ==================================== */
+
+    #opening .opening-content .opening-message {
+
+        width: 100% !important;
+
+        max-width: 520px !important;
+
+        margin:
+            4vh
+            0
+            0
+            0 !important;
+
+        padding: 0 !important;
+
+        text-align: left !important;
+    }
+
+
+    /* ====================================
+       BUTTON
+    ==================================== */
+
+    #opening .opening-content .invitation-button {
+
+        align-self: flex-start !important;
+
+        margin:
+            5vh
+            0
+            0
+            0 !important;
+    }
+
+
+    /* ====================================
+       PHOTO
+    ==================================== */
+
+    #opening .opening-photo {
+
+        position: absolute !important;
+
+        top: 3.5% !important;
+
+        left: 73% !important;
+
+        right: auto !important;
+
+        width: 25% !important;
+
+        height: 93% !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        z-index: 5 !important;
+
+        pointer-events: none !important;
+
+        transform:
+            translateX(var(--opening-shift-x)) !important;
+
+        filter: none !important;
+
+        -webkit-filter: none !important;
+    }
+
+
+    /* ====================================
+       PHOTO FRAME
+    ==================================== */
+
+    #opening .opening-photo-frame {
+
+        position: relative !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow: hidden !important;
+
+        border:
+            1px solid
+            rgba(184, 148, 82, 0.28) !important;
+
+        box-sizing: border-box !important;
+
+        transform: none !important;
+
+        filter: none !important;
+
+        -webkit-filter: none !important;
+    }
+
+
+    /* ====================================
+       PHOTO IMAGE
+    ==================================== */
+
+    #opening .opening-photo-frame img {
+
+        position: absolute !important;
+
+        top: 0 !important;
+        left: 0 !important;
+
+        width: 100% !important;
+        height: 100% !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        display: block !important;
+
+        object-fit: cover !important;
+
+        object-position: center !important;
+
+        opacity: 0.88 !important;
+
+        filter: none !important;
+
+        -webkit-filter: none !important;
+
+        transform: none !important;
+    }
+
+
+    /* ====================================
+       PHOTO LIGHT OVERLAY
+    ==================================== */
+
+    #opening .opening-photo-frame::after {
+
+        content: "" !important;
+
+        position: absolute !important;
+
+        inset: 0 !important;
+
+        z-index: 2 !important;
+
+        background:
+            rgba(244, 235, 219, 0.08) !important;
+
+        pointer-events: none !important;
+    }
+
+
+    /* ====================================
+       TEXT ABOVE EVERYTHING
+    ==================================== */
+
+    #opening .opening-content,
+    #opening .opening-content > * {
+
+        opacity: 1 !important;
+
+        filter: none !important;
+
+        -webkit-filter: none !important;
+    }
+
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #opening {
+
+        min-height: 100vh;
+
+    }
+
+
+    .opening-content {
+
+        width: 100%;
+
+        min-height: 100vh;
+
+        margin: 0;
+
+        padding:
+
+            6vh
+            7vw
+            6vh;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
+
+        text-align: center;
+
+    }
+
+
+    /* ====================================
+       PHOTO — NORMAL FLOW
+    ==================================== */
+
+    .opening-photo {
+
+        position: relative;
+
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+
+        width: 76%;
+
+        height: 250px;
+
+        margin:
+
+            2.5rem
+            auto
+            1.8rem;
+
+        transform: none;
+
+        order: 3;
+
+    }
+
+
+    .opening-photo-frame {
+
+        width: 100%;
+
+        height: 100%;
+
+    }
+
+
+    .opening-photo-frame img {
+
+        object-position: center;
+
+        opacity: 0.88;
+
+    }
+
+
+    /* ====================================
+       TEXT ORDER
+    ==================================== */
+
+    .opening-content .eyebrow {
+
+        order: 1;
+
+        width: 100%;
+
+    }
+
+
+    .opening-content .couple-name {
+
+        order: 2;
+
+        width: 100%;
+
+    }
+
+
+    .opening-content .opening-date {
+
+        order: 4;
+
+        width: 100%;
+
+    }
+
+
+    .opening-content .opening-message {
+
+        order: 5;
+
+        width: 100%;
+
+        max-width: 340px;
+
+    }
+
+
+    .opening-content .invitation-button {
+
+        order: 6;
+
+        margin-top: 1.5rem;
+
+    }
+
+}
+
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 400px) {
+
+    .opening-photo {
+
+        width: 82%;
+
+        height: 220px;
+
+        margin-top: 2rem;
+
+        margin-bottom: 1.5rem;
+
+    }
+
+}
+
+/* ========================================
+   OPENING — CINEMATIC INVITATION
+======================================== */
+
+#opening {
+    min-height: 100svh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(216, 195, 165, 0.22),
+            transparent 38%),
+        var(--background);
+}
+
+
+/* Large atmospheric ampersand */
+
+#opening::before {
+    content: "&";
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-family: var(--heading-font);
+    font-size: min(72vw, 800px);
+    line-height: 1;
+
+    color: rgba(184, 155, 98, 0.055);
+
+    pointer-events: none;
+}
+
+
+/* Elegant outer frame */
+
+#opening::after {
+    content: "";
+
+    position: absolute;
+    inset: 28px;
+
+    border: 1px solid rgba(41, 38, 36, 0.12);
+
+    pointer-events: none;
+}
+
+
+/* Opening content */
+
+#opening .opening-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(90%, 900px);
+
+    gap: 28px;
+}
+
+
+/* Small top label */
+
+#opening .eyebrow {
+    position: relative;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.45em;
+
+    color: var(--olive);
+}
+
+
+/* Decorative line beside label */
+
+#opening .eyebrow::before,
+#opening .eyebrow::after {
+    content: "";
+
+    display: inline-block;
+
+    width: 35px;
+    height: 1px;
+
+    margin: 0 14px;
+
+    vertical-align: middle;
+
+    background: var(--secondary);
+}
+
+
+/* Couple names */
+
+#opening .couple-name {
+    position: relative;
+
+    font-size: clamp(4rem, 11vw, 9rem);
+    font-weight: 400;
+
+    letter-spacing: -0.055em;
+
+    text-transform: uppercase;
+}
+
+
+/* The ampersand */
+
+#opening .couple-name span {
+    display: inline-block;
+
+    margin: 0 0.04em;
+
+    font-size: 0.45em;
+    font-weight: 400;
+
+    color: var(--accent);
+
+    transform: translateY(-0.12em);
+}
+
+
+/* Date */
+
+#opening .opening-date {
+    position: relative;
+
+    margin-top: 4px;
+
+    padding-top: 20px;
+
+    font-size: 0.72rem;
+    letter-spacing: 0.55em;
+
+    color: var(--primary);
+}
+
+
+/* Small line above date */
+
+#opening .opening-date::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 45px;
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background: var(--accent);
+}
+
+
+/* Invitation text */
+
+#opening .opening-message {
+    margin-top: 4px;
+
+    max-width: 360px;
+
+    font-size: 0.9rem;
+    line-height: 1.9;
+
+    color: var(--muted);
+}
+
+
+/* Open button */
+
+#opening .invitation-button {
+    position: relative;
+
+    margin-top: 18px;
+
+    padding: 17px 34px;
+
+    background: transparent;
+    color: var(--primary);
+
+    border: 1px solid rgba(41, 38, 36, 0.35);
+
+    transition:
+        color 0.5s ease,
+        background 0.5s ease,
+        border-color 0.5s ease,
+        transform 0.5s ease;
+}
+
+#opening .invitation-button::before {
+    content: "";
+
+    position: absolute;
+    inset: 4px;
+
+    border: 1px solid rgba(184, 155, 98, 0.35);
+
+    pointer-events: none;
+}
+
+#opening .invitation-button:hover {
+    border-color: var(--primary);
+    color: var(--background);
+
+    transform: translateY(-4px);
+}
+
+
+/* Small corner ornaments */
+
+#opening .opening-content::before,
+#opening .opening-content::after {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    border: 1px solid var(--accent);
+
+    opacity: 0.65;
+}
+
+#opening .opening-content::before {
+    top: -90px;
+    left: -90px;
+
+    border-right: none;
+    border-bottom: none;
+}
+
+#opening .opening-content::after {
+    right: -90px;
+    bottom: -90px;
+
+    border-left: none;
+    border-top: none;
+}
+
+
+/* ========================================
+   OPENING — MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #opening::after {
+        inset: 16px;
+    }
+
+    #opening .opening-content {
+        width: 88%;
+        gap: 22px;
+    }
+
+    #opening .eyebrow {
+        font-size: 0.55rem;
+        letter-spacing: 0.3em;
+    }
+
+    #opening .eyebrow::before,
+    #opening .eyebrow::after {
+        width: 18px;
+        margin: 0 8px;
+    }
+
+    #opening .couple-name {
+        font-size: clamp(3.2rem, 16vw, 6rem);
+        line-height: 0.9;
+    }
+
+    #opening .opening-date {
+        font-size: 0.62rem;
+        letter-spacing: 0.35em;
+    }
+
+    #opening .opening-message {
+        max-width: 290px;
+
+        font-size: 0.82rem;
+        line-height: 1.8;
+    }
+
+    #opening .opening-content::before {
+        top: -50px;
+        left: -30px;
+    }
+
+    #opening .opening-content::after {
+        right: -30px;
+        bottom: -50px;
+    }
+}
+
+/* ========================================
+   COUPLE — NEW EDITORIAL DESIGN
+======================================== */
+
+#couple {
+    position: relative;
+
+    min-height: 82svh;
+
+    background: var(--background);
+
+    color: var(--primary);
+
+    text-align: center;
+
+    overflow: hidden;
+
+    padding:
+        55px 24px 60px;
+}
+
+
+/* ========================================
+   ATMOSPHERIC WATERMARK
+======================================== */
+
+.couple-watermark {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 0;
+
+    font-family: var(--heading-font);
+
+    font-size:
+        clamp(14rem, 32vw, 32rem);
+
+    line-height: 0.8;
+
+    color:
+        rgba(255, 248, 240, 0.035);
+
+    pointer-events: none;
+
+    user-select: none;
+}
+
+
+/* ========================================
+   PARTICLES
+======================================== */
+
+.couple-particles {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+.couple-particles span {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    opacity: 0.3;
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.couple-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 900px);
+
+    margin: 0 auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* ========================================
+   LABEL
+======================================== */
+
+#couple .couple-label {
+    margin: 0 0 10px;
+
+    color: var(--secondary);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.4em;
+}
+
+
+/* ========================================
+   INTRO
+======================================== */
+
+.couple-intro {
+    width: min(100%, 430px);
+
+    margin: 0 0 25px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.75rem;
+
+    line-height: 1.7;
+
+    letter-spacing: 0.03em;
+
+    opacity: 0.8;
+}
+
+
+/* ========================================
+   PHOTO COMPOSITION
+======================================== */
+
+.couple-gallery {
+    position: relative;
+
+    width: min(100%, 650px);
+
+    height: 430px;
+
+    margin: 0 auto 8px;
+}
+
+
+/* ========================================
+   PHOTO BASE
+======================================== */
+
+.couple-photo {
+    position: absolute;
+
+    margin: 0;
+
+    padding: 0;
+
+    background: transparent;
+}
+
+
+/* ========================================
+   MAIN PHOTO
+======================================== */
+
+.couple-photo-main {
+    top: 0;
+
+    left: 13%;
+
+    width: 47%;
+
+    z-index: 2;
+}
+
+
+/* ========================================
+   SECOND PHOTO
+======================================== */
+
+.couple-photo-secondary {
+    top: 17%;
+
+    right: 13%;
+
+    width: 33%;
+
+    z-index: 3;
+}
+
+
+/* ========================================
+   ARCH PHOTO FRAME
+======================================== */
+
+.couple-photo-frame {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 0.72;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(208, 170, 112, 0.8);
+
+    border-radius:
+        160px 160px 0 0;
+
+    background:
+        rgba(255, 248, 240, 0.05);
+
+    box-shadow:
+        0 18px 45px rgba(43, 24, 30, 0.18);
+}
+
+
+/* Inner gold frame */
+
+.couple-photo-frame::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(255, 248, 240, 0.38);
+
+    border-radius:
+        150px 150px 0 0;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   IMAGES
+======================================== */
+
+.couple-photo img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius:
+        150px 150px 0 0;
+
+    transition:
+        transform 1s ease;
+}
+
+
+.couple-photo:hover img {
+    transform: scale(1.025);
+}
+
+
+/* ========================================
+   NAMES
+======================================== */
+
+.couple-name-orbit {
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.couple-names {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.couple-name-bride,
+.couple-name-groom {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    font-family: var(--heading-font);
+
+    font-size:
+        clamp(3rem, 6vw, 5.4rem);
+
+    line-height: 0.82;
+
+    letter-spacing: -0.045em;
+
+    color: var(--primary);
+
+    font-weight: 400;
+}
+
+
+/* ========================================
+   AMPERSAND
+======================================== */
+
+.couple-ampersand {
+    margin: 12px 0;
+
+    color: var(--accent);
+
+    font-family: var(--heading-font);
+
+    font-size:
+        clamp(1.7rem, 3vw, 2.5rem);
+
+    font-style: italic;
+
+    line-height: 1;
+}
+
+
+/* ========================================
+   DIVIDER
+======================================== */
+
+.couple-divider {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 20px 0 13px;
+}
+
+
+.couple-divider span {
+    width: 40px;
+
+    height: 1px;
+
+    background: var(--accent);
+
+    opacity: 0.65;
+}
+
+
+.couple-divider i {
+    color: var(--accent);
+
+    font-family: var(--heading-font);
+
+    font-size: 0.75rem;
+
+    font-style: normal;
+}
+
+
+/* ========================================
+   DATE
+======================================== */
+
+.couple-date {
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.38em;
+
+    text-transform: uppercase;
+}
+
+/* ========================================
+   COUPLE — LUXURY DECORATION
+======================================== */
+
+/* ----------------------------------------
+   SOFT GOLD ATMOSPHERE
+---------------------------------------- */
+
+#couple::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    top: 28%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(circle,
+            rgba(208, 170, 112, 0.09),
+            transparent 68%);
+
+    pointer-events: none;
+}
+
+
+/* ----------------------------------------
+   FINE OUTER FRAME
+---------------------------------------- */
+
+#couple::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 20px;
+
+    border: 1px solid rgba(208, 170, 112, 0.12);
+
+    pointer-events: none;
+}
+
+
+/* ----------------------------------------
+   GOLD BOTANICAL ORNAMENTS
+---------------------------------------- */
+
+.couple-content::before,
+.couple-content::after {
+    content: "❧";
+
+    position: absolute;
+
+    font-family: Georgia, serif;
+
+    color: rgba(208, 170, 112, 0.65);
+
+    font-size: 2rem;
+
+    pointer-events: none;
+}
+
+
+/* Left ornament */
+
+.couple-content::before {
+    left: 2%;
+
+    top: 24%;
+
+    transform: rotate(-35deg);
+}
+
+
+/* Right ornament */
+
+.couple-content::after {
+    right: 2%;
+
+    top: 52%;
+
+    transform:
+        rotate(145deg);
+}
+
+
+/* ----------------------------------------
+   PHOTO GOLD GLOW
+---------------------------------------- */
+
+.couple-photo-frame {
+    box-shadow:
+        0 20px 55px rgba(43, 24, 30, 0.20),
+        0 0 0 1px rgba(208, 170, 112, 0.08);
+}
+
+
+/* ----------------------------------------
+   PHOTO CORNER DETAILS
+---------------------------------------- */
+
+.couple-photo-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 13px;
+
+    border-top: 1px solid rgba(208, 170, 112, 0.35);
+
+    border-left: 1px solid rgba(208, 170, 112, 0.35);
+
+    border-radius:
+        145px 0 0 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+
+/* ----------------------------------------
+   NAME ACCENT
+---------------------------------------- */
+
+.couple-name-bride::after,
+.couple-name-groom::after {
+    content: "";
+
+    width: 18px;
+
+    height: 1px;
+
+    margin-top: 12px;
+
+    background: var(--accent);
+
+    opacity: 0.55;
+}
+
+
+/* ----------------------------------------
+   AMPERSAND DECORATION
+---------------------------------------- */
+
+.couple-ampersand {
+    position: relative;
+
+    padding: 0 18px;
+}
+
+
+.couple-ampersand::before,
+.couple-ampersand::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+
+    width: 20px;
+
+    height: 1px;
+
+    background: var(--accent);
+
+    opacity: 0.45;
+}
+
+
+.couple-ampersand::before {
+    right: 100%;
+}
+
+
+.couple-ampersand::after {
+    left: 100%;
+}
+
+
+/* ----------------------------------------
+   SMALL GOLD STARS
+---------------------------------------- */
+
+.couple-name-orbit::before,
+.couple-name-orbit::after {
+    content: "✦";
+
+    position: absolute;
+
+    color: rgba(208, 170, 112, 0.55);
+
+    font-size: 0.65rem;
+
+    pointer-events: none;
+}
+
+
+.couple-name-orbit::before {
+    left: 12%;
+
+    top: 30%;
+}
+
+
+.couple-name-orbit::after {
+    right: 12%;
+
+    bottom: 25%;
+}
+
+
+/* ----------------------------------------
+   DATE ORNAMENT
+---------------------------------------- */
+
+.couple-date {
+    position: relative;
+
+    padding-top: 14px;
+}
+
+
+.couple-date::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 50%;
+
+    width: 32px;
+
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background: var(--accent);
+
+    opacity: 0.65;
+}
+
+
+/* ----------------------------------------
+   SUBTLE PHOTO HOVER
+---------------------------------------- */
+
+.couple-photo-main,
+.couple-photo-secondary {
+    transition:
+        transform 0.8s cubic-bezier(.2, .7, .2, 1);
+}
+
+
+.couple-photo-main:hover {
+    transform: translateY(-5px);
+}
+
+
+.couple-photo-secondary:hover {
+    transform: translateY(-5px) rotate(0.5deg);
+}
+
+/* ========================================
+   COUPLE — REFERENCE PHOTO COMPOSITION
+======================================== */
+
+/* Main photo */
+.couple-photo-main {
+    top: 0;
+    left: 15%;
+    width: 45%;
+    z-index: 2;
+}
+
+/* Secondary photo */
+.couple-photo-secondary {
+    top: 12%;
+    right: 14%;
+    width: 32%;
+    z-index: 3;
+}
+
+
+/* ========================================
+   ARCH FRAME
+======================================== */
+
+.couple-photo-frame {
+    position: relative;
+
+    width: 100%;
+    aspect-ratio: 0.68;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(208, 170, 112, 0.95);
+
+    border-radius:
+        180px 180px 0 0;
+
+    background: transparent;
+
+    padding: 7px;
+
+    box-shadow: none;
+}
+
+
+/* Inner arch outline */
+.couple-photo-frame::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(208, 170, 112, 0.65);
+
+    border-radius:
+        170px 170px 0 0;
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+/* Fine ivory inner line */
+.couple-photo-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 11px;
+
+    border: 1px solid rgba(255, 248, 240, 0.28);
+
+    border-radius:
+        166px 166px 0 0;
+
+    pointer-events: none;
+
+    z-index: 4;
+}
+
+
+/* ========================================
+   PHOTO
+======================================== */
+
+.couple-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius:
+        165px 165px 0 0;
+}
+
+
+/* ========================================
+   REMOVE HEAVY PHOTO SHADOW
+======================================== */
+
+.couple-photo-frame {
+    box-shadow:
+        0 12px 35px rgba(43, 24, 30, 0.12);
+}
+
+
+/* ========================================
+   NAMES — REFERENCE STYLE
+======================================== */
+
+.couple-names {
+    margin-top: -2px;
+}
+
+
+.couple-name-bride,
+.couple-name-groom {
+    font-family: var(--heading-font);
+
+    font-size:
+        clamp(3.2rem, 6.5vw, 5.8rem);
+
+    line-height: 0.78;
+
+    letter-spacing: -0.055em;
+
+    font-weight: 400;
+}
+
+
+/* Remove the little lines I added previously */
+.couple-name-bride::after,
+.couple-name-groom::after {
+    display: none;
+}
+
+
+/* ========================================
+   AMPERSAND
+======================================== */
+
+.couple-ampersand {
+    margin: 14px 0;
+
+    padding: 0;
+
+    font-size:
+        clamp(1.7rem, 3vw, 2.4rem);
+
+    color: var(--accent);
+}
+
+
+.couple-ampersand::before,
+.couple-ampersand::after {
+    display: none;
+}
+
+
+/* ========================================
+   PHOTO → NAME DISTANCE
+======================================== */
+
+.couple-gallery {
+    height: 400px;
+
+    margin-bottom: -2px;
+}
+
+
+/* ========================================
+   DECORATIVE GOLD CORNERS
+======================================== */
+
+.couple-photo-main::before,
+.couple-photo-secondary::before {
+    content: "";
+
+    position: absolute;
+
+    width: 22px;
+    height: 22px;
+
+    border-top: 1px solid var(--accent);
+    border-left: 1px solid var(--accent);
+
+    top: -8px;
+    left: -8px;
+
+    z-index: 8;
+
+    pointer-events: none;
+}
+
+
+.couple-photo-secondary::before {
+    top: -8px;
+    left: auto;
+    right: -8px;
+
+    border-left: none;
+    border-right: 1px solid var(--accent);
+}
+
+
+/* ========================================
+   SMALL GOLD BOTANICAL MARKS
+======================================== */
+
+.couple-photo-main::after,
+.couple-photo-secondary::after {
+    content: "✦";
+
+    position: absolute;
+
+    color: var(--accent);
+
+    font-size: 0.7rem;
+
+    z-index: 9;
+
+    pointer-events: none;
+}
+
+
+.couple-photo-main::after {
+    left: -18px;
+    bottom: 18%;
+}
+
+
+.couple-photo-secondary::after {
+    right: -18px;
+    bottom: 25%;
+}
+
+/* ========================================
+   ENGAGEMENT DATE + COUNTDOWN
+   LUXURY IVORY — CHAMPAGNE GOLD
+======================================== */
+
+#countdown {
+    position: relative;
+
+    min-height: 100svh;
+
+    color: var(--primary);
+
+    text-align: center;
+
+    overflow: hidden;
+
+    isolation: isolate;
+
+    background:
+        radial-gradient(circle at 50% 45%,
+            rgba(218, 166, 66, 0.12),
+            transparent 42%);
+}
+
+
+/* ========================================
+   LARGE BACKGROUND WATERMARK
+======================================== */
+
+#countdown::before {
+    content: "12";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -53%);
+
+    font-family: var(--heading-font);
+
+    font-size:
+        min(75vw, 850px);
+
+    line-height: 0.8;
+
+    letter-spacing: -0.08em;
+
+    color:
+        rgba(184,
+            155,
+            98,
+            0.055);
+
+    pointer-events: none;
+
+    user-select: none;
+
+    z-index: -2;
+}
+
+
+/* ========================================
+   SOFT GOLD ATMOSPHERE
+======================================== */
+
+#countdown::after {
+    content: "";
+
+    position: absolute;
+
+    width: min(70vw, 850px);
+    height: min(70vw, 850px);
+
+    left: 50%;
+    top: 48%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            rgba(218, 166, 66, 0.10) 0%,
+            rgba(255, 253, 246, 0.18) 28%,
+            transparent 68%);
+
+    filter: blur(12px);
+
+    pointer-events: none;
+
+    z-index: -1;
+
+    animation:
+        countdown-glow 7s ease-in-out infinite;
+}
+
+
+@keyframes countdown-glow {
+
+    0%,
+    100% {
+        opacity: 0.65;
+
+        transform:
+            translate(-50%, -50%) scale(0.96);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            translate(-50%, -50%) scale(1.04);
+    }
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+#countdown>* {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* ========================================
+   LABEL
+======================================== */
+
+#countdown .section-label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-bottom: 25px;
+
+    color: var(--accent);
+
+    font-size: 0.64rem;
+
+    letter-spacing: 0.42em;
+
+    text-transform: uppercase;
+}
+
+
+/* Gold lines beside label */
+
+#countdown .section-label::before,
+#countdown .section-label::after {
+
+    content: "";
+
+    width: 42px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            var(--accent));
+
+    opacity: 0.7;
+}
+
+
+#countdown .section-label::after {
+
+    background:
+        linear-gradient(90deg,
+            var(--accent),
+            transparent);
+}
+
+
+/* ========================================
+   DATE HEADING
+======================================== */
+
+#countdown h2 {
+
+    margin: 0;
+
+    color: var(--primary);
+
+    font-family: var(--heading-font);
+
+    font-size:
+        clamp(2.5rem,
+            6vw,
+            5.2rem);
+
+    line-height: 1;
+
+    letter-spacing: 0.025em;
+
+    font-weight: 400;
+
+    text-shadow:
+        0 3px 18px rgba(201, 154, 61, 0.10);
+}
+
+
+/* ========================================
+   SMALL GOLD DIVIDER
+======================================== */
+
+.countdown-container::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: -38px;
+
+    transform:
+        translateX(-50%);
+
+    color: var(--accent);
+
+    font-size: 0.7rem;
+}
+
+
+/* ========================================
+   COUNTDOWN CONTAINER
+======================================== */
+
+.countdown-container {
+
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(150px, 190px));
+
+    justify-content: center;
+
+    align-items: stretch;
+
+    gap:
+        clamp(18px,
+            2.5vw,
+            30px);
+
+    margin-top: 85px;
+}
+
+
+/* ========================================
+   COUNTDOWN CARD
+======================================== */
+
+.countdown-item {
+
+    position: relative;
+
+    min-width: 0;
+
+    min-height: 175px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 25px 18px;
+
+    border: 1px solid rgba(201,
+            154,
+            61,
+            0.68);
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 253, 246, 0.72),
+            rgba(244, 232, 211, 0.38));
+
+    box-shadow:
+        0 10px 35px rgba(130, 91, 35, 0.08),
+
+        inset 0 0 20px rgba(255, 255, 255, 0.30),
+
+        0 0 18px rgba(218, 166, 66, 0.08);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+
+    animation:
+        countdown-card-float 5s ease-in-out infinite;
+}
+
+
+/* Stagger the cards */
+
+.countdown-item:nth-child(1) {
+    animation-delay: -0.2s;
+}
+
+.countdown-item:nth-child(2) {
+    animation-delay: -1s;
+}
+
+.countdown-item:nth-child(3) {
+    animation-delay: -1.8s;
+}
+
+.countdown-item:nth-child(4) {
+    animation-delay: -2.6s;
+}
+
+
+@keyframes countdown-card-float {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-5px);
+    }
+}
+
+
+/* ========================================
+   CARD GOLD GLOW
+======================================== */
+
+.countdown-item::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -1px;
+
+    border-radius: 26px;
+
+    border: 1px solid rgba(218,
+            166,
+            66,
+            0.25);
+
+    box-shadow:
+        0 0 22px rgba(218,
+            166,
+            66,
+            0.18);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    animation:
+        countdown-border-glow 4s ease-in-out infinite;
+}
+
+
+.countdown-item:nth-child(2)::before {
+    animation-delay: 0.8s;
+}
+
+.countdown-item:nth-child(3)::before {
+    animation-delay: 1.6s;
+}
+
+.countdown-item:nth-child(4)::before {
+    animation-delay: 2.4s;
+}
+
+
+@keyframes countdown-border-glow {
+
+    0%,
+    100% {
+        opacity: 0.15;
+    }
+
+    50% {
+        opacity: 0.9;
+    }
+}
+
+
+/* ========================================
+   GOLD CORNER DETAILS
+======================================== */
+
+.countdown-item::after {
+
+    content: "✦";
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 13px;
+
+    color: var(--accent);
+
+    font-size: 0.55rem;
+
+    opacity: 0.65;
+}
+
+
+/* ========================================
+   COUNTDOWN NUMBER
+======================================== */
+
+.countdown-item span {
+
+    display: block;
+
+    color: var(--primary);
+
+    font-family: var(--heading-font);
+
+    font-size:
+        clamp(3rem,
+            5vw,
+            4.5rem);
+
+    line-height: 0.9;
+
+    font-weight: 400;
+
+    letter-spacing: -0.035em;
+
+    text-shadow:
+        0 3px 14px rgba(201,
+            154,
+            61,
+            0.12);
+
+    transition:
+        transform 0.35s ease,
+        text-shadow 0.35s ease;
+}
+
+
+/* ========================================
+   LABEL
+======================================== */
+
+.countdown-item small {
+
+    margin-top: 14px;
+
+    color: var(--secondary);
+
+    font-size: 0.56rem;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   GOLD ICONS
+======================================== */
+
+.countdown-item small::before {
+
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: var(--accent);
+
+    font-size: 0.85rem;
+
+    opacity: 0.85;
+}
+
+
+/* Different icon for each item */
+
+.countdown-item:nth-child(1) small::before {
+    content: "♧";
+}
+
+.countdown-item:nth-child(2) small::before {
+    content: "◷";
+}
+
+.countdown-item:nth-child(3) small::before {
+    content: "⌛";
+}
+
+.countdown-item:nth-child(4) small::before {
+    content: "◴";
+}
+
+
+/* ========================================
+   DECORATIVE DIVIDER
+======================================== */
+
+.countdown-container {
+
+    margin-bottom: 90px;
+}
+
+
+.countdown-container::after {
+
+    content:
+        "────────  ❧  ♥  ❧  ────────";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: calc(100% + 65px);
+
+    transform:
+        translateX(-50%);
+
+    white-space: nowrap;
+
+    color: var(--accent);
+
+    font-family: var(--heading-font);
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.12em;
+
+    opacity: 0.75;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #countdown {
+
+        min-height: 100svh;
+
+        padding-left: 18px;
+
+        padding-right: 18px;
+    }
+
+
+    /* Watermark */
+
+    #countdown::before {
+
+        font-size: 105vw;
+
+        transform:
+            translate(-50%, -48%);
+    }
+
+
+    /* Glow */
+
+    #countdown::after {
+
+        width: 115vw;
+
+        height: 115vw;
+    }
+
+
+    /* Label */
+
+    #countdown .section-label {
+
+        margin-bottom: 18px;
+
+        gap: 9px;
+
+        font-size: 0.52rem;
+
+        letter-spacing: 0.32em;
+    }
+
+
+    #countdown .section-label::before,
+    #countdown .section-label::after {
+
+        width: 22px;
+    }
+
+
+    /* Date */
+
+    #countdown h2 {
+
+        max-width: 340px;
+
+        margin:
+            0 auto;
+
+        font-size:
+            clamp(2rem,
+                9vw,
+                3rem);
+
+        line-height: 1.15;
+
+        letter-spacing: 0.015em;
+    }
+
+
+    /* Countdown grid */
+
+    .countdown-container {
+
+        width: 100%;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 14px;
+
+        margin-top: 55px;
+
+        margin-bottom: 65px;
+    }
+
+
+    /* Mobile cards */
+
+    .countdown-item {
+
+        min-height: 145px;
+
+        padding: 20px 10px;
+
+        border-radius: 22px;
+    }
+
+
+    .countdown-item::before {
+
+        border-radius: 22px;
+    }
+
+
+    /* Number */
+
+    .countdown-item span {
+
+        font-size:
+            clamp(2.7rem,
+                12vw,
+                3.5rem);
+    }
+
+
+    /* Label */
+
+    .countdown-item small {
+
+        margin-top: 12px;
+
+        font-size: 0.48rem;
+
+        letter-spacing: 0.18em;
+    }
+
+
+    .countdown-item small::before {
+
+        margin-bottom: 7px;
+
+        font-size: 0.72rem;
+    }
+
+
+    /* Remove old colon separators */
+
+    .countdown-item:not(:last-child)::after {
+
+        content: none;
+    }
+
+
+    /* Decorative divider */
+
+    .countdown-container::before {
+
+        top: -28px;
+
+        font-size: 0.55rem;
+    }
+
+
+    .countdown-container::after {
+
+        top: calc(100% + 48px);
+
+        font-size: 0.58rem;
+
+        letter-spacing: 0.04em;
+    }
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #countdown::after,
+    .countdown-item,
+    .countdown-item::before {
+
+        animation: none;
+    }
+}
+
+/* ========================================
+   ABOUT US — EDITORIAL CENTER LINE
+   IVORY CREAM + CHAMPAGNE GOLD
+======================================== */
+
+#about {
+    position: relative;
+
+    min-height: 100svh;
+
+    background: var(--background);
+
+    color: var(--primary);
+
+    overflow: hidden;
+
+    padding:
+        90px 24px 100px;
+
+    isolation: isolate;
+}
+
+
+/* ========================================
+   SOFT CENTER ATMOSPHERE
+======================================== */
+
+#about::before {
+    content: "";
+
+    position: absolute;
+
+    width: 760px;
+    height: 760px;
+
+    left: 50%;
+    top: 52%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+
+            rgba(201,
+                163,
+                84,
+                0.11) 0%,
+
+            rgba(255,
+                255,
+                255,
+                0.16) 32%,
+
+            transparent 70%);
+
+    filter: blur(18px);
+
+    pointer-events: none;
+
+    z-index: -2;
+}
+
+
+/* ========================================
+   DECORATION
+======================================== */
+
+#about::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 7%;
+    bottom: 20%;
+
+    color: var(--accent);
+
+    font-size: 0.75rem;
+
+    opacity: 0.55;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.about-header {
+    position: relative;
+
+    z-index: 5;
+
+    width: min(90%, 900px);
+
+    margin:
+        0 auto 65px;
+
+    text-align: center;
+}
+
+
+.about-header .section-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-bottom: 18px;
+
+    color: var(--accent);
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.42em;
+
+    text-transform: uppercase;
+}
+
+
+.about-header .section-label::before,
+.about-header .section-label::after {
+    content: "";
+
+    width: 32px;
+
+    height: 1px;
+
+    background: var(--accent);
+
+    opacity: 0.55;
+}
+
+
+.about-intro {
+    max-width: 390px;
+
+    margin: 0 auto;
+
+    font-family: var(--heading-font);
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+
+    color: var(--text-secondary);
+
+    opacity: 0.78;
+}
+
+
+/* ========================================
+   EDITORIAL AREA
+======================================== */
+
+.about-editorial {
+    position: relative;
+
+    width: min(100%, 1100px);
+
+    min-height: 900px;
+
+    margin: 0 auto;
+}
+
+
+/* ========================================
+   PEOPLE — COMMON
+======================================== */
+
+.about-person {
+    position: absolute;
+
+    display: flex;
+
+    align-items: center;
+
+    z-index: 3;
+}
+
+
+/* ========================================
+   BRIDE
+   TOP LEFT
+
+   PHOTO → TEXT → CENTER LINE
+======================================== */
+
+.about-person.bride {
+
+    top: 0;
+    left: 0;
+
+    width:
+        calc(50% - 20px);
+
+    flex-direction: row;
+
+    justify-content: flex-end;
+
+    gap: 24px;
+}
+
+
+/* ========================================
+   GROOM
+   BOTTOM
+
+   CENTER LINE → TEXT → PHOTO
+======================================== */
+
+.about-person.groom {
+
+    right: 0;
+    bottom: 0;
+
+    width:
+        calc(50% - 20px);
+
+    flex-direction: row-reverse;
+
+    justify-content: flex-end;
+
+    gap: 24px;
+}
+
+
+/* ========================================
+   PHOTO
+======================================== */
+
+.about-photo {
+    position: relative;
+
+    flex-shrink: 0;
+
+    width:
+        clamp(210px,
+            20vw,
+            275px);
+
+    aspect-ratio:
+        0.68;
+}
+
+
+/* ========================================
+   OUTER PHOTO FRAME
+======================================== */
+
+.photo-frame {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 8px;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(201,
+            163,
+            84,
+            0.85);
+
+    border-radius:
+        155px 155px 0 0;
+
+    background:
+        rgba(255,
+            255,
+            255,
+            0.18);
+
+    box-shadow:
+        0 18px 45px rgba(111,
+            87,
+            56,
+            0.08);
+}
+
+
+/* ========================================
+   INNER GOLD LINE
+======================================== */
+
+.photo-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border:
+        1px solid rgba(201,
+            163,
+            84,
+            0.72);
+
+    border-radius:
+        148px 148px 0 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   INNER IVORY LINE
+======================================== */
+
+.photo-frame::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border:
+        1px solid rgba(255,
+            255,
+            255,
+            0.42);
+
+    border-radius:
+        142px 142px 0 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   PHOTO
+======================================== */
+
+.photo-frame img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius:
+        142px 142px 0 0;
+
+    transition:
+        transform 1s cubic-bezier(.2,
+            .7,
+            .2,
+            1);
+}
+
+
+.photo-frame:hover img {
+    transform:
+        scale(1.04);
+}
+
+
+/* ========================================
+   TEXT DETAILS
+======================================== */
+
+.about-details {
+    width: 245px;
+
+    min-width: 0;
+
+    flex-shrink: 1;
+}
+
+
+/* ========================================
+   ROLE
+======================================== */
+
+.person-role {
+    margin:
+        0 0 11px;
+
+    color: var(--accent);
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.4em;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   NAME
+======================================== */
+
+.person-name {
+    margin: 0;
+
+    font-family:
+        var(--heading-font);
+
+    font-size:
+        clamp(2.3rem,
+            3.5vw,
+            4rem);
+
+    font-weight: 400;
+
+    line-height: 0.88;
+
+    letter-spacing:
+        -0.045em;
+
+    color: var(--primary);
+}
+
+
+/* ========================================
+   GOLD LINE
+======================================== */
+
+.person-line {
+    position: relative;
+
+    display: block;
+
+    width: 72px;
+
+    height: 1px;
+
+    margin:
+        21px 0;
+
+    background:
+        var(--accent);
+}
+
+
+.person-line::after {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 100%;
+
+    width: 6px;
+    height: 6px;
+
+    transform:
+        translate(0,
+            -50%);
+
+    border-radius: 50%;
+
+    background:
+        var(--accent);
+}
+
+
+/* ========================================
+   FAMILY
+======================================== */
+
+.person-family {
+    margin: 0;
+
+    font-family:
+        var(--heading-font);
+
+    font-size: 0.78rem;
+
+    line-height: 1.9;
+
+    color:
+        rgba(111,
+            87,
+            56,
+            0.68);
+}
+
+
+/* ========================================
+   CENTER VERTICAL LINE
+======================================== */
+
+.about-editorial::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 8%;
+
+    width: 1px;
+
+    height: 84%;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        linear-gradient(to bottom,
+
+            transparent 0%,
+
+            rgba(201,
+                163,
+                84,
+                0.72) 10%,
+
+            rgba(201,
+                163,
+                84,
+                0.72) 90%,
+
+            transparent 100%);
+
+    z-index: 1;
+}
+
+
+/* ========================================
+   CENTER AMPERSAND
+======================================== */
+
+.about-ampersand {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,
+            -50%);
+
+    z-index: 10;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 68px;
+    height: 68px;
+
+    border:
+        1px solid rgba(201,
+            163,
+            84,
+            0.72);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,
+            253,
+            246,
+            0.96);
+
+    box-shadow:
+        0 10px 30px rgba(111,
+            87,
+            56,
+            0.08);
+
+    font-family:
+        var(--heading-font);
+
+    font-size: 2rem;
+
+    font-style: italic;
+
+    color:
+        var(--accent);
+}
+
+
+/* ========================================
+   INNER AMPERSAND RING
+======================================== */
+
+.about-ampersand::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border:
+        1px solid rgba(201,
+            163,
+            84,
+            0.28);
+
+    border-radius: 50%;
+}
+
+
+/* ========================================
+   SMALL STARS
+======================================== */
+
+.about-person.bride::before,
+.about-person.groom::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    color: var(--accent);
+
+    font-size: 0.65rem;
+
+    opacity: 0.55;
+}
+
+
+.about-person.bride::before {
+
+    left: -25px;
+
+    top: 12%;
+}
+
+
+.about-person.groom::before {
+
+    right: -25px;
+
+    bottom: 12%;
+}
+
+
+/* ========================================
+   DESKTOP
+======================================== */
+
+@media (min-width: 701px) {
+
+    .about-editorial {
+        min-height: 720px;
+    }
+
+    /* ====================================
+       BRIDE — TOP
+       PHOTO LEFT
+       TEXT RIGHT
+       BOTH BEFORE CENTER LINE
+    ==================================== */
+
+    .about-person.bride {
+
+        top: 0;
+
+        left: 0;
+
+        width:
+            calc(50% - 12px);
+
+        display: flex;
+
+        flex-direction: row;
+
+        align-items: center;
+
+        justify-content: flex-end;
+
+        gap: 22px;
+    }
+
+
+    .about-person.bride .about-photo {
+
+        flex-shrink: 0;
+
+        width: 225px;
+    }
+
+
+    .about-person.bride .about-details {
+
+        width: 235px;
+
+        text-align: left;
+    }
+
+
+    /* ====================================
+       GROOM — BOTTOM
+       TEXT LEFT
+       PHOTO RIGHT
+       BOTH AFTER CENTER LINE
+    ==================================== */
+
+    .about-person.groom {
+
+        right: 0;
+
+        bottom: 0;
+
+        width:
+            calc(50% - 12px);
+
+        display: flex;
+
+        flex-direction: row-reverse;
+
+        align-items: center;
+
+        justify-content: flex-end;
+
+        gap: 22px;
+    }
+
+
+    .about-person.groom .about-photo {
+
+        flex-shrink: 0;
+
+        width: 225px;
+    }
+
+
+    .about-person.groom .about-details {
+
+        width: 235px;
+
+        text-align: left;
+    }
+
+
+    /* ====================================
+       CENTER LINE
+       DO NOT MOVE
+    ==================================== */
+
+    .about-editorial::before {
+
+        left: 50%;
+
+        top: 8%;
+
+        height: 84%;
+
+        transform:
+            translateX(-50%);
+    }
+
+
+    /* ====================================
+       AMPERSAND
+       EXACTLY ON CENTER LINE
+    ==================================== */
+
+    .about-ampersand {
+
+        left: 50%;
+
+        top: 50%;
+
+        transform:
+            translate(-50%,
+                -50%);
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+   SAME EDITORIAL IDEA
+======================================== */
+
+@media (max-width: 700px) {
+
+    #about {
+
+        min-height: auto;
+
+        padding:
+            70px 18px 100px;
+    }
+
+
+    /* ====================================
+       HEADER
+    ==================================== */
+
+    .about-header {
+
+        width: 100%;
+
+        margin-bottom: 48px;
+    }
+
+
+    .about-header .section-label {
+
+        gap: 8px;
+
+        font-size: 0.5rem;
+
+        letter-spacing: 0.3em;
+    }
+
+
+    .about-header .section-label::before,
+    .about-header .section-label::after {
+
+        width: 22px;
+    }
+
+
+    .about-intro {
+
+        max-width: 285px;
+
+        font-size: 0.82rem;
+
+        line-height: 1.7;
+    }
+
+
+    /* ====================================
+       EDITORIAL AREA
+    ==================================== */
+
+    .about-editorial {
+
+        width: 100%;
+
+        min-height: auto;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 70px;
+
+        margin: 0 auto;
+    }
+
+
+    /* ====================================
+       COMMON PERSON
+    ==================================== */
+
+    .about-person {
+
+        position: relative !important;
+
+        top: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+
+        width: 100% !important;
+
+        max-width: 390px;
+
+        min-height: 210px;
+
+        margin: 0 auto;
+
+        display: grid !important;
+
+        align-items: center;
+
+        gap: 14px;
+
+        transform: none !important;
+    }
+
+
+    /* ====================================
+       BRIDE
+       PHOTO LEFT
+       TEXT RIGHT
+    ==================================== */
+
+    .about-person.bride {
+
+        grid-template-columns:
+            145px minmax(0, 1fr);
+
+        flex-direction:
+            unset !important;
+    }
+
+
+    .about-person.bride .about-photo {
+
+        grid-column: 1;
+
+        grid-row: 1;
+
+        width: 145px;
+
+        max-width: 145px;
+    }
+
+
+    .about-person.bride .about-details {
+
+        grid-column: 2;
+
+        grid-row: 1;
+
+        text-align: left;
+    }
+
+
+    /* ====================================
+       GROOM
+       TEXT LEFT
+       PHOTO RIGHT
+    ==================================== */
+
+    .about-person.groom {
+
+        grid-template-columns:
+            minmax(0, 1fr) 145px;
+
+        flex-direction:
+            unset !important;
+    }
+
+
+    .about-person.groom .about-details {
+
+        grid-column: 1;
+
+        grid-row: 1;
+
+        text-align: left;
+    }
+
+
+    .about-person.groom .about-photo {
+
+        grid-column: 2;
+
+        grid-row: 1;
+
+        width: 145px;
+
+        max-width: 145px;
+    }
+
+
+    /* ====================================
+       MOBILE PHOTO
+    ==================================== */
+
+    .about-photo {
+
+        min-width: 0;
+
+        aspect-ratio:
+            0.68;
+    }
+
+
+    /* ====================================
+       MOBILE DETAILS
+    ==================================== */
+
+    .about-details {
+
+        width: 100%;
+
+        min-width: 0;
+
+        max-width: none;
+    }
+
+
+    /* ====================================
+       ROLE
+    ==================================== */
+
+    .person-role {
+
+        margin-bottom: 8px;
+
+        font-size: 0.47rem;
+
+        letter-spacing: 0.25em;
+    }
+
+
+    /* ====================================
+       NAME
+    ==================================== */
+
+    .person-name {
+
+        font-size:
+            clamp(1.65rem,
+                7.5vw,
+                2.45rem);
+
+        line-height: 0.88;
+
+        letter-spacing:
+            -0.04em;
+    }
+
+
+    /* ====================================
+       GOLD LINE
+    ==================================== */
+
+    .person-line {
+
+        width: 42px;
+
+        margin:
+            13px 0;
+    }
+
+
+    /* ====================================
+       FAMILY
+    ==================================== */
+
+    .person-family {
+
+        font-size: 0.59rem;
+
+        line-height: 1.7;
+    }
+
+
+    /* ====================================
+       CENTER LINE
+    ==================================== */
+
+    .about-editorial::before {
+
+        left: 50%;
+
+        top: 46%;
+
+        width: 1px;
+
+        height: 8%;
+
+        transform:
+            translateX(-50%);
+    }
+
+
+    /* ====================================
+       AMPERSAND
+    ==================================== */
+
+    .about-ampersand {
+
+        left: 50%;
+
+        top: 50%;
+
+        width: 48px;
+
+        height: 48px;
+
+        transform:
+            translate(-50%,
+                -50%);
+
+        font-size: 1.35rem;
+    }
+
+
+    /* ====================================
+       DECORATIONS
+    ==================================== */
+
+    .about-person.bride::before,
+    .about-person.groom::before {
+
+        display: none;
+    }
+
+}
+
+
+/* ========================================
+   SMALL PHONES
+======================================== */
+
+@media (max-width: 380px) {
+
+    #about {
+
+        padding-left: 12px;
+
+        padding-right: 12px;
+    }
+
+
+    .about-editorial {
+
+        gap: 58px;
+    }
+
+
+    .about-person {
+
+        max-width: 350px;
+
+        gap: 11px;
+
+        min-height: 190px;
+    }
+
+
+    .about-person.bride {
+
+        grid-template-columns:
+            120px minmax(0, 1fr);
+    }
+
+
+    .about-person.groom {
+
+        grid-template-columns:
+            minmax(0, 1fr) 120px;
+    }
+
+
+    .about-person.bride .about-photo,
+    .about-person.groom .about-photo {
+
+        width: 120px;
+
+        max-width: 120px;
+    }
+
+
+    .person-name {
+
+        font-size: 1.55rem;
+    }
+
+
+    .person-family {
+
+        font-size: 0.55rem;
+    }
+
+
+    .about-ampersand {
+
+        width: 44px;
+
+        height: 44px;
+
+        font-size: 1.25rem;
+    }
+
+}
+
+/* ========================================
+   FIX — AMPERSAND EXACTLY ON CENTER LINE
+======================================== */
+
+.about-editorial {
+    position: relative;
+}
+
+.about-editorial .about-ampersand {
+    position: absolute !important;
+
+    left: 50% !important;
+    top: 50% !important;
+
+    transform:
+        translate(-50%,
+            -50%) !important;
+
+    margin: 0 !important;
+
+    z-index: 20;
+}
+
+/* ========================================
+   ENGAGEMENT EVENTS
+======================================== */
+
+#events {
+    min-height: 100svh;
+
+    background: var(--background);
+
+    color: var(--primary);
+
+    overflow: hidden;
+
+    text-align: left;
+}
+
+
+/* ========================================
+   SECTION LABEL
+======================================== */
+
+#events .section-label {
+    width: min(100%, 950px);
+
+    margin-bottom: 75px;
+
+    color: var(--secondary);
+}
+
+
+/* ========================================
+   EVENTS CONTAINER
+======================================== */
+
+.events-container {
+    position: relative;
+
+    width: min(100%, 950px);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 90px;
+}
+
+
+/* Connecting vertical line */
+
+.events-container::before {
+    content: "";
+
+    position: absolute;
+
+    left: 31px;
+    top: 20px;
+    bottom: 20px;
+
+    width: 1px;
+
+    background:
+        linear-gradient(to bottom,
+            transparent,
+            rgba(184, 155, 98, 0.7),
+            transparent);
+}
+
+
+/* ========================================
+   EVENT
+======================================== */
+
+.event {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns: 64px 1fr;
+
+    column-gap: 45px;
+
+    align-items: start;
+}
+
+
+/* Event number */
+
+.event-number {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 64px;
+    height: 64px;
+
+    border: 1px solid rgba(216, 195, 165, 0.45);
+
+    border-radius: 50%;
+
+
+    font-family: var(--heading-font);
+
+    font-size: 1rem;
+
+    color: var(--secondary);
+}
+
+
+/* ========================================
+   EVENT CONTENT
+======================================== */
+
+.event h3 {
+    margin-top: 4px;
+    margin-bottom: 18px;
+
+    font-size: clamp(1.7rem, 4vw, 3.4rem);
+
+    line-height: 1;
+
+    letter-spacing: -0.02em;
+
+    font-weight: 400;
+}
+
+
+.event>p:not(.event-number):not(.event-venue) {
+    display: inline-block;
+
+    margin-right: 22px;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: var(--text-muted);
+}
+
+
+/* Venue */
+
+.event .event-venue {
+    margin-top: 18px;
+
+    font-family: var(--heading-font);
+
+    font-size: 0.95rem;
+
+    color: var(--secondary);
+}
+
+
+/* ========================================
+   SMALL ACCENT
+======================================== */
+
+.event h3::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+    height: 1px;
+
+    margin-top: 20px;
+
+    background: var(--accent);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #events {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+
+    #events .section-label {
+        margin-bottom: 55px;
+    }
+
+
+    .events-container {
+        gap: 75px;
+    }
+
+
+    .events-container::before {
+        left: 24px;
+    }
+
+
+    .event {
+        grid-template-columns: 48px 1fr;
+
+        column-gap: 22px;
+    }
+
+
+    .event-number {
+        width: 48px;
+        height: 48px;
+
+        font-size: 0.8rem;
+    }
+
+
+    .event h3 {
+        font-size: clamp(1.5rem, 8vw, 2.5rem);
+
+        line-height: 1.05;
+    }
+
+
+    .event>p:not(.event-number):not(.event-venue) {
+        display: block;
+
+        margin-right: 0;
+        margin-bottom: 5px;
+
+        font-size: 0.6rem;
+
+        letter-spacing: 0.13em;
+    }
+
+
+    .event .event-venue {
+        font-size: 0.82rem;
+    }
+}
+
+/* ========================================
+   VENUE + MAP
+======================================== */
+
+#venue {
+    min-height: 100svh;
+
+    color: var(--primary);
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   LABEL
+======================================== */
+
+#venue .section-label {
+    margin-bottom: 30px;
+
+    color: var(--olive);
+}
+
+
+/* ========================================
+   VENUE NAME
+======================================== */
+
+#venue h2 {
+    font-size: clamp(2.7rem, 6.5vw, 5.8rem);
+
+    line-height: 0.95;
+
+    letter-spacing: -0.045em;
+
+    max-width: 900px;
+}
+
+
+/* ========================================
+   ADDRESS
+======================================== */
+
+.venue-address {
+    margin-top: 22px;
+
+    font-family: var(--heading-font);
+    font-size: clamp(1.3rem, 2.2vw, 2rem);
+
+    color: var(--accent);
+
+    letter-spacing: 0.02em;
+}
+
+
+/* ========================================
+   DATE + TIME
+======================================== */
+
+.venue-date {
+    margin-top: 18px;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.3em;
+
+    text-transform: uppercase;
+
+    color: var(--olive);
+}
+
+
+/* ========================================
+   LOCATION BUTTON
+======================================== */
+
+.location-button {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 245px;
+    height: 62px;
+
+    margin-top: 38px;
+
+    padding: 0 30px;
+
+    border: 1px solid var(--accent);
+
+    color: var(--primary);
+
+    background: transparent;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+
+    text-decoration: none;
+
+    transition:
+        background 0.35s ease,
+        color 0.35s ease,
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+
+/* Inner elegant border */
+
+.location-button::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border: 1px solid rgba(184, 155, 98, 0.45);
+
+    pointer-events: none;
+}
+
+
+/* Arrow */
+
+.location-button::after {
+    content: "→";
+
+    margin-left: 20px;
+
+    font-size: 1.1rem;
+
+    color: var(--accent);
+
+    transition: transform 0.35s ease;
+}
+
+
+/* Hover */
+
+.location-button:hover {
+    background: var(--accent);
+
+    color: var(--background);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+.location-button:hover::after {
+    transform: translateX(5px);
+}
+
+/* ========================================
+   DECORATIVE COMPASS
+======================================== */
+
+#venue::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 18%;
+    left: 10%;
+
+    font-size: 0.8rem;
+
+    color: var(--accent);
+}
+
+
+#venue::after {
+    content: "✦";
+
+    position: absolute;
+
+    right: 10%;
+    bottom: 18%;
+
+    font-size: 0.6rem;
+
+    color: var(--accent);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #venue {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+
+    #venue h2 {
+        font-size: clamp(2.8rem, 13vw, 5rem);
+
+        max-width: 100%;
+    }
+
+
+    .venue-address {
+        max-width: 280px;
+
+        font-size: 0.78rem;
+    }
+
+
+    .venue-date {
+        font-size: 0.55rem;
+
+        letter-spacing: 0.2em;
+    }
+
+
+    .location-button {
+        width: 100%;
+
+        max-width: 250px;
+    }
+
+
+    #venue::before {
+        left: 5%;
+    }
+
+
+    #venue::after {
+        right: 5%;
+    }
+}
+
+/* ========================================
+   PHOTO GALLERY — EDITORIAL COLLAGE
+======================================== */
+
+#gallery {
+    min-height: 100svh;
+
+    background: var(--background);
+    color: var(--primary);
+
+    padding-top: 110px;
+    padding-bottom: 110px;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+#gallery .section-label {
+    color: var(--secondary);
+
+    margin-bottom: 18px;
+}
+
+#gallery h2 {
+    margin-bottom: 70px;
+
+    font-size: clamp(3rem, 7vw, 6rem);
+
+    letter-spacing: -0.04em;
+}
+
+
+/* ========================================
+   GALLERY GRID
+======================================== */
+
+.gallery-grid {
+    width: min(100%, 950px);
+
+    display: grid;
+
+    grid-template-columns: 1.25fr 0.75fr;
+
+    grid-template-rows: 260px 180px 260px;
+
+    gap: 14px;
+}
+
+
+/* ========================================
+   GALLERY ITEM
+======================================== */
+
+.gallery-item {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    background: var(--background-deep);
+
+    border: none;
+
+    cursor: pointer;
+}
+
+
+/* Images */
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.9s cubic-bezier(.2, .7, .2, 1),
+        filter 0.6s ease;
+}
+
+
+/* ========================================
+   COLLAGE POSITIONS
+======================================== */
+
+.gallery-item:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+
+.gallery-item:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+
+.gallery-item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+
+.gallery-item:nth-child(4) {
+    grid-column: 1 / 3;
+    grid-row: 3;
+}
+
+
+/* ========================================
+   HOVER
+======================================== */
+
+.gallery-item::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 12px;
+
+    border: 1px solid rgba(248, 244, 237, 0.35);
+
+    opacity: 0;
+
+    transform: scale(0.96);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+
+    pointer-events: none;
+}
+
+
+.gallery-item:hover img {
+    transform: scale(1.06);
+
+    filter: brightness(0.78);
+}
+
+
+.gallery-item:hover::after {
+    opacity: 1;
+
+    transform: scale(1);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #gallery {
+        padding-top: 85px;
+        padding-bottom: 85px;
+
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+
+    #gallery h2 {
+        margin-bottom: 45px;
+
+        font-size: clamp(2.8rem, 13vw, 5rem);
+    }
+
+
+    .gallery-grid {
+        width: 100%;
+
+        grid-template-columns: 1fr 1fr;
+
+        grid-template-rows:
+            230px 160px 230px;
+
+        gap: 8px;
+    }
+
+
+    .gallery-item:nth-child(1) {
+        grid-column: 1 / 3;
+        grid-row: 1;
+    }
+
+
+    .gallery-item:nth-child(2) {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+
+    .gallery-item:nth-child(3) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+
+    .gallery-item:nth-child(4) {
+        grid-column: 1 / 3;
+        grid-row: 3;
+    }
+
+
+    .gallery-item::after {
+        inset: 7px;
+    }
+}
+
+/* ========================================
+   GALLERY — IMAGE ADJUSTMENT
+======================================== */
+
+.gallery-item {
+    overflow: hidden;
+}
+
+
+/* Keep every image inside its frame */
+
+.gallery-item img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center center;
+
+    transition:
+        transform 0.8s
+        cubic-bezier(.2, .7, .2, 1);
+}
+
+
+/* ========================================
+   INDIVIDUAL PHOTO POSITIONING
+======================================== */
+
+/* Large first photo */
+
+.gallery-item:nth-child(1) img {
+    object-position: center 10%;
+}
+
+
+/* Top-right photo */
+
+.gallery-item:nth-child(2) img {
+    object-position: center 35%;
+}
+
+
+/* Bottom-right photo */
+
+.gallery-item:nth-child(3) img {
+    object-position: center 40%;
+}
+
+
+/* Bottom wide photo */
+
+.gallery-item:nth-child(4) img {
+    object-position: center 20%;
+}
+
+
+/* ========================================
+   HOVER
+======================================== */
+
+.gallery-item:hover img {
+
+    transform: scale(1.025);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .gallery-item img {
+
+        object-position: center center;
+    }
+
+
+    .gallery-item:nth-child(1) img {
+
+        object-position: center 5%;
+    }
+
+
+    .gallery-item:nth-child(4) img {
+
+        object-position: center 25%;
+    }
+
+}
+
+/* ========================================
+   SPECIAL INVITATION
+======================================== */
+
+#invitation-message {
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 110px 24px;
+
+    overflow: hidden;
+
+    text-align: center;
+}
+
+
+/* ========================================
+   OUTER FRAME
+======================================== */
+
+#invitation-message::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 28px;
+
+    border: 1px solid rgba(255, 248, 240, 0.13);
+
+    pointer-events: none;
+}
+
+
+#invitation-message::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 36px;
+
+    border: 1px solid rgba(208, 170, 112, 0.08);
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   BACKGROUND AMPERSAND
+======================================== */
+
+.invitation-watermark {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 0;
+
+    font-family: var(--heading-font);
+
+    font-size: min(65vw, 700px);
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    color:
+        rgba(255, 248, 240, 0.035);
+
+    pointer-events: none;
+
+    user-select: none;
+
+    animation:
+        invitation-watermark-float 9s ease-in-out infinite;
+}
+
+
+@keyframes invitation-watermark-float {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, -50%) rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -51%) rotate(2deg);
+    }
+
+}
+
+
+/* ========================================
+   MAIN CARD
+======================================== */
+
+.invitation-card {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 760px);
+
+    min-height: 600px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 80px 55px;
+
+    border: 1px solid rgba(208, 170, 112, 0.34);
+
+    background:
+        rgba(52, 28, 34, 0.16);
+
+    box-shadow:
+        0 30px 90px rgba(20, 10, 15, 0.16);
+
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+
+    animation:
+        invitation-card-enter 1.2s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+
+@keyframes invitation-card-enter {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0) scale(1);
+    }
+
+}
+
+
+/* ========================================
+   TOP ORNAMENT
+======================================== */
+
+.invitation-ornament {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    margin-bottom: 32px;
+}
+
+
+.invitation-ornament span {
+    width: 55px;
+    height: 1px;
+
+    background:
+        rgba(208, 170, 112, 0.7);
+}
+
+
+.invitation-ornament i {
+    color: var(--accent);
+
+    font-size: 0.8rem;
+
+    font-style: normal;
+}
+
+
+/* ========================================
+   LABEL
+======================================== */
+
+#invitation-message .section-label {
+    margin-bottom: 28px;
+
+    color: var(--secondary);
+
+    letter-spacing: 0.42em;
+
+    font-size: 0.65rem;
+}
+
+
+/* ========================================
+   MAIN TITLE
+======================================== */
+
+.invitation-title {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: var(--text-main);
+
+    font-family: var(--heading-font);
+
+    font-size: clamp(3rem,
+            7vw,
+            5.8rem);
+
+    font-weight: 400;
+
+    line-height: 1.02;
+
+    letter-spacing: -0.045em;
+}
+
+
+/* ========================================
+   DIVIDER
+======================================== */
+
+.invitation-divider {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 40px 0 32px;
+}
+
+
+.invitation-divider span {
+    width: 45px;
+    height: 1px;
+
+    background:
+        rgba(208, 170, 112, 0.55);
+}
+
+
+.invitation-divider i {
+    color: var(--accent);
+
+    font-size: 0.7rem;
+
+    font-style: normal;
+}
+
+
+/* ========================================
+   SECONDARY MESSAGE
+======================================== */
+
+.invitation-message {
+    max-width: 390px;
+
+    margin: 0;
+
+    color: var(--text-muted);
+
+    font-family: var(--heading-font);
+
+    font-size: 1rem;
+
+    font-style: italic;
+
+    line-height: 1.9;
+}
+
+
+/* ========================================
+   SIGNATURE
+======================================== */
+
+.invitation-signature {
+    margin-top: 48px;
+
+    text-align: center;
+}
+
+
+.invitation-signature p {
+    margin: 0;
+
+    color: var(--text-main);
+
+    font-family: var(--heading-font);
+
+    font-size: 1.35rem;
+
+    letter-spacing: 0.08em;
+}
+
+
+.invitation-signature p span {
+    margin: 0 6px;
+
+    color: var(--accent);
+}
+
+
+.invitation-signature small {
+    display: block;
+
+    margin-top: 9px;
+
+    color: var(--text-muted);
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.32em;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #invitation-message {
+        padding: 80px 18px;
+    }
+
+
+    #invitation-message::before {
+        inset: 16px;
+    }
+
+
+    #invitation-message::after {
+        inset: 23px;
+    }
+
+
+    .invitation-watermark {
+        font-size: 120vw;
+    }
+
+
+    .invitation-card {
+        min-height: 560px;
+
+        padding:
+            65px 28px;
+    }
+
+
+    .invitation-ornament {
+        margin-bottom: 25px;
+    }
+
+
+    .invitation-ornament span {
+        width: 35px;
+    }
+
+
+    #invitation-message .section-label {
+        margin-bottom: 22px;
+
+        font-size: 0.55rem;
+
+        letter-spacing: 0.32em;
+    }
+
+
+    .invitation-title {
+        max-width: 330px;
+
+        font-size:
+            clamp(2.8rem,
+                12vw,
+                4.5rem);
+
+        line-height: 1.06;
+    }
+
+
+    .invitation-divider {
+        margin:
+            32px 0 25px;
+    }
+
+
+    .invitation-divider span {
+        width: 30px;
+    }
+
+
+    .invitation-message {
+        max-width: 300px;
+
+        font-size: 0.92rem;
+
+        line-height: 1.8;
+    }
+
+
+    .invitation-signature {
+        margin-top: 38px;
+    }
+
+
+    .invitation-signature p {
+        font-size: 1.1rem;
+    }
+
+}
+
+/* ========================================
+   OPENING PAGE
+   LOCKED UNTIL USER OPENS INVITATION
+======================================== */
+
+#opening {
+    min-height: 100svh;
+    height: 100svh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s cubic-bezier(.22, .61, .36, 1);
+}
+
+
+/* ========================================
+   OPENING EXIT
+======================================== */
+
+#opening.opening-exit {
+    opacity: 0;
+
+    transform:
+        translateY(-20px) scale(1.015);
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   COMPLETELY REMOVE OPENING
+======================================== */
+
+#opening.opening-removed {
+    display: none;
+}
+
+/* ========================================
+   FIXED MUSIC PLAYER
+   TOP-RIGHT MINI PLAYER
+======================================== */
+
+.music-player {
+
+    position: fixed;
+
+    top: 24px;
+    right: 24px;
+
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+
+    width: 52px;
+    height: 52px;
+
+    padding: 4px;
+
+    border: 1px solid
+        rgba(201, 163, 84, 0.35);
+
+    border-radius: 50px;
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(92, 70, 45, 0.14);
+
+    overflow: hidden;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform:
+        translateY(-12px);
+
+    transition:
+        width 0.45s
+            cubic-bezier(.2, .7, .2, 1),
+
+        opacity 0.5s ease,
+
+        transform 0.5s ease,
+
+        box-shadow 0.35s ease;
+}
+
+
+/* ========================================
+   SHOW AFTER OPEN INVITATION
+======================================== */
+
+body.invitation-open .music-player {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0);
+}
+
+
+/* ========================================
+   MUSIC TOGGLE
+======================================== */
+
+.music-toggle {
+
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        #FFFFFF;
+
+    color:
+        var(--text-main);
+
+    font-family:
+        var(--heading-font);
+
+    font-size:
+        1.35rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 3px 12px
+        rgba(80, 60, 40, 0.10);
+
+    transition:
+        transform 0.3s ease,
+
+        background 0.3s ease,
+
+        color 0.3s ease;
+}
+
+
+.music-toggle:hover {
+
+    transform:
+        scale(1.06);
+
+    background:
+        #FFF9F0;
+
+    color:
+        var(--accent);
+}
+
+
+/* ========================================
+   MUSIC CONTROLS
+======================================== */
+
+.music-controls {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 2px;
+
+    width: 0;
+
+    opacity: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    transition:
+        width 0.4s
+            cubic-bezier(.2, .7, .2, 1),
+
+        opacity 0.25s ease;
+}
+
+
+/* ========================================
+   EXPANDED PLAYER
+======================================== */
+
+.music-player.expanded {
+
+    width: 174px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(92, 70, 45, 0.18);
+}
+
+
+.music-player.expanded
+.music-controls {
+
+    width: 118px;
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* ========================================
+   MUSIC CONTROLS
+======================================== */
+
+.music-control {
+
+    width: 36px;
+
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        transparent;
+
+    color:
+        var(--text-main);
+
+    font-size:
+        1.15rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+
+        transform 0.25s ease,
+
+        color 0.25s ease;
+}
+
+
+.music-control:hover {
+
+    background:
+        rgba(
+            201,
+            163,
+            84,
+            0.12
+        );
+
+    color:
+        var(--accent);
+
+    transform:
+        scale(1.08);
+}
+
+
+/* ========================================
+   PLAY / PAUSE
+======================================== */
+
+.music-play {
+
+    width: 40px;
+
+    height: 40px;
+
+    background:
+        var(--accent);
+
+    color:
+        #FFF9EE;
+
+    font-size:
+        0.82rem;
+
+    box-shadow:
+        0 4px 12px
+        rgba(
+            201,
+            163,
+            84,
+            0.28
+        );
+}
+
+
+.music-play:hover {
+
+    background:
+        #D8B264;
+
+    color:
+        #FFF9EE;
+
+    transform:
+        scale(1.06);
+}
+
+
+/* ========================================
+   PLAYING STATE
+======================================== */
+
+.music-player.playing
+.music-toggle {
+
+    color:
+        var(--accent);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(
+            201,
+            163,
+            84,
+            0.10
+        );
+}
+
+
+.music-player.playing
+.music-play {
+
+    box-shadow:
+        0 0 0 4px
+        rgba(
+            201,
+            163,
+            84,
+            0.12
+        ),
+
+        0 4px 14px
+        rgba(
+            201,
+            163,
+            84,
+            0.30
+        );
+}
+
+
+/* ========================================
+   SUBTLE MUSIC PULSE
+======================================== */
+
+.music-player.playing
+.music-toggle {
+
+    animation:
+        music-pulse
+        2.2s
+        ease-in-out
+        infinite;
+}
+
+
+@keyframes music-pulse {
+
+    0%,
+    100% {
+
+        box-shadow:
+            0 0 0 0
+            rgba(
+                201,
+                163,
+                84,
+                0
+            );
+    }
+
+    50% {
+
+        box-shadow:
+            0 0 0 6px
+            rgba(
+                201,
+                163,
+                84,
+                0.10
+            );
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .music-player {
+
+        top: 16px;
+
+        right: 16px;
+
+        width: 50px;
+
+        height: 50px;
+    }
+
+
+    .music-toggle {
+
+        width: 42px;
+
+        height: 42px;
+
+        font-size:
+            1.25rem;
+    }
+
+
+    .music-player.expanded {
+
+        width: 168px;
+    }
+
+
+    .music-player.expanded
+    .music-controls {
+
+        width: 114px;
+    }
+
+
+    .music-control {
+
+        width: 34px;
+
+        height: 34px;
+
+        font-size:
+            1.05rem;
+    }
+
+
+    .music-play {
+
+        width: 38px;
+
+        height: 38px;
+
+        font-size:
+            0.78rem;
+    }
+}
+
+
+/* ========================================
+   FIXED UI
+   MUST NOT INHERIT SCROLL ANIMATION
+======================================== */
+
+.music-player,
+.calendar-modal,
+.calendar-help-modal,
+.gallery-lightbox {
+
+    transform: none;
+}
+
+/* ========================================
+   FINAL / THANK YOU
+======================================== */
+
+#final {
+    min-height: 100svh;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 110px 24px;
+
+    background: var(--background);
+
+    color: var(--primary);
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+
+/* ========================================
+   SUBTLE FRAME
+======================================== */
+
+#final::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 28px;
+
+    border: 1px solid rgba(255, 248, 240, 0.16);
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.final-content {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 760px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* ========================================
+   LABEL
+======================================== */
+
+#final .section-label {
+    margin: 0 0 22px;
+
+    color: var(--secondary);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.38em;
+
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.final-title {
+    margin: 0;
+
+    font-family: var(--heading-font);
+
+    color: var(--primary);
+
+    font-size: clamp(4rem,
+            10vw,
+            7rem);
+
+    font-weight: 400;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.04em;
+}
+
+
+/* ========================================
+   ORNAMENT
+======================================== */
+
+.final-ornament {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    margin: 30px 0;
+}
+
+
+.final-ornament span {
+    width: 46px;
+
+    height: 1px;
+
+    background: var(--accent);
+
+    opacity: 0.7;
+}
+
+
+.final-ornament i {
+    color: var(--accent);
+
+    font-style: normal;
+
+    font-size: 0.85rem;
+}
+
+
+/* ========================================
+   MESSAGE
+======================================== */
+
+.final-message {
+    max-width: 480px;
+
+    margin: 0 0 40px;
+
+    color: var(--text-secondary);
+
+    font-family: var(--heading-font);
+
+    font-size: 1rem;
+
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   CALENDAR CARD
+======================================== */
+
+.final-calendar-card {
+    width: min(100%, 430px);
+
+    margin: 0 auto 30px;
+
+    padding: 2px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(208, 170, 112, 0.75),
+            rgba(255, 248, 240, 0.16),
+            rgba(208, 170, 112, 0.55));
+}
+
+
+.calendar-card-inner {
+    padding: 34px 38px 30px;
+
+    background: var(--background);
+
+    border: 1px solid rgba(255, 248, 240, 0.12);
+}
+
+
+/* ========================================
+   CALENDAR HEADER
+======================================== */
+
+.calendar-month {
+    margin: 0;
+
+    color: var(--secondary);
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.42em;
+}
+
+
+.calendar-year {
+    margin: 8px 0 20px;
+
+    font-family: var(--heading-font);
+
+    color: var(--primary);
+
+    font-size: 2rem;
+}
+
+
+.calendar-line {
+    width: 48px;
+
+    height: 1px;
+
+    margin: 0 auto 22px;
+
+    background: var(--accent);
+}
+
+
+/* ========================================
+   WEEKDAYS
+======================================== */
+
+.calendar-weekdays,
+.calendar-days {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 8px;
+
+    text-align: center;
+}
+
+
+.calendar-weekdays {
+    margin-bottom: 12px;
+
+    color: var(--text-muted);
+
+    font-size: 0.55rem;
+
+    letter-spacing: 0.1em;
+}
+
+
+.calendar-days {
+    color: var(--text-secondary);
+
+    font-size: 0.72rem;
+}
+
+
+.calendar-days span {
+    min-height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* ========================================
+   EVENT DAY
+======================================== */
+
+.calendar-days .event-day {
+    position: relative;
+
+    width: 29px;
+    height: 29px;
+
+    margin: auto;
+
+    border: 1px solid var(--accent);
+
+    border-radius: 50%;
+
+    color: var(--primary);
+}
+
+
+.calendar-days .event-day::after {
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    bottom: -7px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: var(--accent);
+}
+
+
+/* ========================================
+   EVENT DETAILS
+======================================== */
+
+.calendar-event {
+    margin-top: 28px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid rgba(255, 248, 240, 0.12);
+}
+
+
+.calendar-event p {
+    margin: 0 0 8px;
+
+    color: var(--secondary);
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.28em;
+}
+
+
+.calendar-event strong {
+    color: var(--primary);
+
+    font-size: 0.65rem;
+
+    font-weight: 400;
+
+    letter-spacing: 0.15em;
+}
+
+
+/* ========================================
+   ADD TO CALENDAR BUTTON
+======================================== */
+
+.final-calendar-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 18px;
+
+    min-width: 240px;
+
+    min-height: 58px;
+
+    padding: 15px 24px;
+
+    border: 1px solid rgba(208, 170, 112, 0.65);
+
+    background:
+        rgba(255, 248, 240, 0.035);
+
+    color: var(--primary);
+
+    font-family: var(--body-font);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition:
+        background 0.35s ease,
+        transform 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+.final-calendar-button i {
+    color: var(--accent);
+
+    font-size: 1.1rem;
+
+    font-style: normal;
+}
+
+
+.final-calendar-button:hover {
+    background:
+        rgba(208, 170, 112, 0.12);
+
+    border-color: var(--accent);
+
+    transform: translateY(-3px);
+}
+
+
+/* ========================================
+   SIGNATURE
+======================================== */
+
+.final-signature {
+    margin-top: 48px;
+}
+
+
+.final-signature p {
+    margin: 0;
+
+    font-family: var(--heading-font);
+
+    color: var(--primary);
+
+    font-size: 1.4rem;
+
+    letter-spacing: 0.04em;
+}
+
+
+.final-signature p span {
+    margin: 0 5px;
+
+    color: var(--accent);
+
+    font-style: italic;
+}
+
+
+.final-signature small {
+    display: block;
+
+    margin-top: 12px;
+
+    color: var(--text-muted);
+
+    font-size: 0.55rem;
+
+    letter-spacing: 0.3em;
+}
+
+
+/* ========================================
+   CALENDAR MODAL
+======================================== */
+
+.calendar-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 24px;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+
+.calendar-modal.active {
+    visibility: visible;
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* ========================================
+   MODAL OVERLAY
+======================================== */
+
+.calendar-modal-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(43, 24, 30, 0.72);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+}
+
+
+/* ========================================
+   MODAL CARD
+======================================== */
+
+.calendar-modal-card {
+    position: relative;
+
+    z-index: 2;
+
+    width: min(100%, 520px);
+
+    max-height: 90svh;
+
+    overflow-y: auto;
+
+    padding: 42px 38px 34px;
+
+    background: var(--background);
+
+    border: 1px solid rgba(208, 170, 112, 0.45);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.3);
+
+    text-align: center;
+
+    transform:
+        translateY(20px) scale(0.98);
+
+    transition:
+        transform 0.4s ease;
+}
+
+
+.calendar-modal.active .calendar-modal-card {
+    transform:
+        translateY(0) scale(1);
+}
+
+
+/* ========================================
+   MODAL CLOSE
+======================================== */
+
+.calendar-modal-close {
+    position: absolute;
+
+    top: 16px;
+    right: 18px;
+
+    width: 36px;
+    height: 36px;
+
+    border: 1px solid rgba(255, 248, 240, 0.18);
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    color: var(--primary);
+
+    font-size: 1.3rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.calendar-modal-close:hover {
+    background:
+        rgba(255, 248, 240, 0.08);
+
+    transform: rotate(90deg);
+}
+
+
+/* ========================================
+   MODAL ORNAMENT
+======================================== */
+
+.calendar-modal-ornament {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+
+.calendar-modal-ornament span {
+    width: 36px;
+
+    height: 1px;
+
+    background: var(--accent);
+
+    opacity: 0.65;
+}
+
+
+.calendar-modal-ornament i {
+    color: var(--accent);
+
+    font-style: normal;
+
+    font-size: 0.75rem;
+}
+
+
+/* ========================================
+   MODAL HEADING
+======================================== */
+
+.calendar-modal-label {
+    margin: 0 0 12px;
+
+    color: var(--secondary);
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.38em;
+}
+
+
+.calendar-modal-card h2 {
+    margin: 0;
+
+    color: var(--primary);
+
+    font-family: var(--heading-font);
+
+    font-size: clamp(2.6rem,
+            7vw,
+            4rem);
+
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+/* ========================================
+   MODAL EVENT
+======================================== */
+
+.calendar-modal-event {
+    margin: 28px 0 30px;
+
+    padding: 20px;
+
+    border-top: 1px solid rgba(255, 248, 240, 0.12);
+
+    border-bottom: 1px solid rgba(255, 248, 240, 0.12);
+}
+
+
+.calendar-modal-event p {
+    margin: 0 0 8px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.2em;
+}
+
+
+.calendar-modal-event .calendar-modal-couple {
+    color: var(--primary);
+
+    font-family: var(--heading-font);
+
+    font-size: 1.35rem;
+
+    letter-spacing: 0.02em;
+}
+
+
+.calendar-modal-couple span {
+    margin: 0 4px;
+
+    color: var(--accent);
+}
+
+
+.calendar-modal-event strong {
+    display: block;
+
+    margin-top: 14px;
+
+    color: var(--accent);
+
+    font-size: 0.6rem;
+
+    font-weight: 400;
+
+    letter-spacing: 0.16em;
+}
+
+
+/* ========================================
+   CALENDAR OPTIONS
+======================================== */
+
+.calendar-options {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.calendar-option {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        46px 1fr 25px;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 16px;
+
+    border: 1px solid rgba(255, 248, 240, 0.18);
+
+    background:
+        rgba(255, 248, 240, 0.035);
+
+    color: var(--primary);
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.calendar-option:hover {
+    background:
+        rgba(208, 170, 112, 0.10);
+
+    border-color:
+        rgba(208, 170, 112, 0.55);
+
+    transform: translateX(4px);
+}
+
+
+/* ========================================
+   OPTION ICON
+======================================== */
+
+.calendar-option-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(208, 170, 112, 0.45);
+
+    border-radius: 50%;
+
+    color: var(--accent);
+
+    font-family: Georgia, serif;
+
+    font-size: 1rem;
+}
+
+
+.apple-icon {
+    font-family: Arial, sans-serif;
+
+    font-size: 1.15rem;
+}
+
+
+/* ========================================
+   OPTION TEXT
+======================================== */
+
+.calendar-option-text {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+
+.calendar-option-text strong {
+    color: var(--primary);
+
+    font-size: 0.68rem;
+
+    font-weight: 400;
+
+    letter-spacing: 0.08em;
+}
+
+
+.calendar-option-text small {
+    color: var(--text-muted);
+
+    font-size: 0.52rem;
+
+    letter-spacing: 0.03em;
+}
+
+
+.calendar-option-arrow {
+    color: var(--accent);
+
+    font-size: 1rem;
+}
+
+
+/* ========================================
+   MODAL NOTE
+======================================== */
+
+.calendar-modal-note {
+    margin: 22px 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.58rem;
+
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #final {
+        padding: 90px 20px;
+    }
+
+
+    #final::before {
+        inset: 16px;
+    }
+
+
+    .final-title {
+        font-size: clamp(3.5rem,
+                17vw,
+                5rem);
+    }
+
+
+    .final-message {
+        max-width: 320px;
+
+        font-size: 0.9rem;
+    }
+
+
+    .final-calendar-card {
+        width: 100%;
+    }
+
+
+    .calendar-card-inner {
+        padding: 28px 18px 25px;
+    }
+
+
+    .calendar-weekdays,
+    .calendar-days {
+        gap: 4px;
+    }
+
+
+    .calendar-modal {
+        padding: 14px;
+    }
+
+
+    .calendar-modal-card {
+        padding: 38px 18px 25px;
+    }
+
+
+    .calendar-option {
+        grid-template-columns:
+            40px 1fr 20px;
+
+        gap: 10px;
+
+        padding: 12px;
+    }
+
+
+    .calendar-option-icon {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* ========================================
+   CALENDAR HELP MODAL
+======================================== */
+
+.calendar-help-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 24px;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 9999;
+
+    transition:
+        opacity 0.45s ease,
+        visibility 0.45s ease;
+}
+
+
+/* ========================================
+   ACTIVE
+======================================== */
+
+.calendar-help-modal.active {
+
+    visibility: visible;
+
+    opacity: 1;
+
+    pointer-events: auto;
+}
+
+
+/* ========================================
+   OVERLAY
+======================================== */
+
+.calendar-help-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(
+            55,
+            43,
+            34,
+            0.42
+        );
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.calendar-help-card {
+
+    position: relative;
+
+    width: min(
+        100%,
+        430px
+    );
+
+    padding:
+        42px 38px 36px;
+
+    background:
+        rgba(
+            251,
+            248,
+            242,
+            0.97
+        );
+
+    border:
+        1px solid
+        rgba(
+            201,
+            163,
+            84,
+            0.55
+        );
+
+    box-shadow:
+        0 30px 80px
+        rgba(
+            70,
+            50,
+            35,
+            0.22
+        );
+
+    text-align: center;
+
+    transform:
+        translateY(18px)
+        scale(0.97);
+
+    transition:
+        transform 0.5s
+        cubic-bezier(
+            .2,
+            .7,
+            .2,
+            1
+        );
+}
+
+
+.calendar-help-modal.active
+.calendar-help-card {
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* ========================================
+   TOP DECORATION
+======================================== */
+
+.calendar-help-card::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    top: 18px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color:
+        var(--accent);
+
+    font-size:
+        0.65rem;
+
+    opacity:
+        0.65;
+}
+
+
+/* ========================================
+   CLOSE
+======================================== */
+
+.calendar-help-close {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 15px;
+
+    width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    background: transparent;
+
+    color:
+        var(--text-secondary);
+
+    font-family:
+        var(--heading-font);
+
+    font-size: 1.45rem;
+
+    font-weight: 300;
+
+    cursor: pointer;
+
+    opacity: 0.7;
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+.calendar-help-close:hover {
+
+    opacity: 1;
+}
+
+
+/* ========================================
+   LABEL
+======================================== */
+
+.calendar-help-label {
+
+    display: block;
+
+    margin-bottom: 11px;
+
+    color:
+        var(--accent);
+
+    font-size:
+        0.52rem;
+
+    letter-spacing:
+        0.34em;
+
+    text-transform:
+        uppercase;
+}
+
+
+/* ========================================
+   TITLE
+======================================== */
+
+.calendar-help-card h3 {
+
+    margin: 0;
+
+    font-family:
+        var(--heading-font);
+
+    font-size:
+        clamp(
+            2rem,
+            6vw,
+            2.7rem
+        );
+
+    font-weight: 400;
+
+    line-height: 1;
+
+    color:
+        var(--primary);
+}
+
+
+/* ========================================
+   GOLD LINE
+======================================== */
+
+.calendar-help-line {
+
+    display: block;
+
+    width: 50px;
+
+    height: 1px;
+
+    margin:
+        20px auto;
+
+    background:
+        var(--accent);
+}
+
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.calendar-help-text {
+
+    max-width: 320px;
+
+    margin:
+        0 auto 25px;
+
+    font-family:
+        var(--heading-font);
+
+    font-size:
+        0.88rem;
+
+    line-height:
+        1.75;
+
+    color:
+        var(--text-secondary);
+}
+
+
+/* ========================================
+   STEPS
+======================================== */
+
+.calendar-help-steps {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-bottom: 28px;
+
+    text-align: left;
+}
+
+
+/* ========================================
+   STEP
+======================================== */
+
+.calendar-help-step {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding:
+        10px 0;
+
+    border-bottom:
+        1px solid
+        rgba(
+            201,
+            163,
+            84,
+            0.18
+        );
+
+    font-family:
+        var(--body-font);
+
+    font-size:
+        0.73rem;
+
+    color:
+        var(--text-secondary);
+}
+
+
+/* ========================================
+   STEP NUMBER
+======================================== */
+
+.calendar-help-number {
+
+    flex-shrink: 0;
+
+    color:
+        var(--accent);
+
+    font-family:
+        var(--heading-font);
+
+    font-size:
+        0.68rem;
+
+    letter-spacing:
+        0.08em;
+}
+
+
+/* ========================================
+   CALENDAR HELP — CONTINUE BUTTON
+======================================== */
+
+.calendar-help-continue {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 78px;
+
+    margin-top: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 32px;
+
+    border: 1px solid #D4A64A;
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #E8B957 0%,
+            #D9A441 45%,
+            #C99732 100%
+        );
+
+    color: #FFF9EE;
+
+    font-family: var(--body-font);
+
+    font-size: 0.78rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.32em;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 0 1px rgba(255, 225, 157, 0.55),
+        0 8px 22px rgba(183, 137, 48, 0.20),
+        0 0 28px rgba(211, 164, 72, 0.20);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background 0.35s ease;
+}
+
+
+/* ========================================
+   BUTTON SHINE
+======================================== */
+
+.calendar-help-continue::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.28),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left 0.8s ease;
+}
+
+
+/* ========================================
+   BUTTON TEXT
+======================================== */
+
+.calendar-help-continue span:first-child {
+
+    position: relative;
+
+    z-index: 2;
+
+    color: #FFF9EE;
+
+    text-shadow:
+        0 1px 2px rgba(110, 75, 25, 0.18);
+}
+
+
+/* ========================================
+   ARROW
+======================================== */
+
+.calendar-help-continue span:last-child {
+
+    position: absolute;
+
+    right: 34px;
+
+    z-index: 2;
+
+    font-size: 1.5rem;
+
+    font-weight: 300;
+
+    letter-spacing: 0;
+
+    color: #FFF9EE;
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+/* ========================================
+   HOVER
+======================================== */
+
+.calendar-help-continue:hover {
+
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #F0C56A 0%,
+            #E1AE4D 45%,
+            #D2A03D 100%
+        );
+
+    box-shadow:
+        0 0 0 1px rgba(255, 230, 170, 0.8),
+        0 12px 28px rgba(183, 137, 48, 0.28),
+        0 0 38px rgba(211, 164, 72, 0.30);
+}
+
+
+.calendar-help-continue:hover::before {
+
+    left: 140%;
+}
+
+
+.calendar-help-continue:hover span:last-child {
+
+    transform: translateX(6px);
+}
+
+
+/* ========================================
+   ACTIVE
+======================================== */
+
+.calendar-help-continue:active {
+
+    transform: translateY(0);
+
+    box-shadow:
+        0 4px 12px rgba(183, 137, 48, 0.20);
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .calendar-help-continue {
+
+        min-height: 68px;
+
+        margin-top: 32px;
+
+        padding: 0 24px;
+
+        font-size: 0.68rem;
+
+        letter-spacing: 0.25em;
+    }
+
+
+    .calendar-help-continue span:last-child {
+
+        right: 22px;
+
+        font-size: 1.3rem;
+    }
+
+}
+
+/* ========================================
+   CALENDAR HELP MODAL
+   FORCE ABOVE ALL PAGE ELEMENTS
+======================================== */
+
+.calendar-help-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+}
+
+
+/* ========================================
+   OVERLAY
+======================================== */
+
+.calendar-help-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background:
+        rgba(72, 55, 48, 0.42);
+
+    backdrop-filter: blur(4px);
+
+    -webkit-backdrop-filter: blur(4px);
+}
+
+
+/* ========================================
+   HELP CARD
+======================================== */
+
+.calendar-help-card {
+    position: relative;
+
+    z-index: 1;
+
+    isolation: isolate;
+}
+
+
+/* ========================================
+   CONTINUE BUTTON
+======================================== */
+
+.calendar-help-continue {
+    position: relative;
+
+    z-index: 999;
+
+    opacity: 1 !important;
+
+    filter: none !important;
+
+    visibility: visible !important;
+
+    display: flex;
+
+    width: 100%;
+
+    min-height: 78px;
+
+    margin-top: 42px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #D4A64A;
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #F0C56A 0%,
+            #DDAA45 50%,
+            #C99632 100%
+        );
+
+    color: #FFF9EE;
+
+    box-shadow:
+        0 0 0 1px rgba(255, 230, 170, 0.75),
+        0 8px 24px rgba(183, 137, 48, 0.28),
+        0 0 30px rgba(211, 164, 72, 0.22);
+}
+
+
+/* ========================================
+   BUTTON CONTENT
+======================================== */
+
+.calendar-help-continue span {
+    position: relative;
+
+    z-index: 2;
+
+    opacity: 1 !important;
+
+    filter: none !important;
+
+    color: #FFF9EE;
+}
+
+
+.calendar-help-continue span:first-child {
+    font-weight: 500;
+
+    letter-spacing: 0.3em;
+}
+
+
+.calendar-help-continue span:last-child {
+    position: absolute;
+
+    right: 32px;
+
+    font-size: 1.5rem;
+
+    letter-spacing: 0;
+
+    color: #FFF9EE;
+}
+
+
+/* ========================================
+   REMOVE ANY BLUR / FADE FROM BUTTON
+======================================== */
+
+.calendar-help-continue::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    border-radius: inherit;
+
+    pointer-events: none;
+
+    background: transparent;
+
+    opacity: 1;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .calendar-help-continue {
+
+        min-height: 68px;
+
+        margin-top: 32px;
+    }
+
+    .calendar-help-continue span:last-child {
+
+        right: 22px;
+
+        font-size: 1.3rem;
+    }
+
+}
+
+/* ========================================
+   GALLERY LIGHTBOX — HARD VISIBILITY FIX
+======================================== */
+
+/* Completely hidden when closed */
+
+#gallery-lightbox[aria-hidden="true"] {
+    display: none !important;
+}
+
+
+/* Visible only when JavaScript opens it */
+
+#gallery-lightbox[aria-hidden="false"] {
+    display: flex !important;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(43, 24, 30, 0.94);
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+/* ========================================
+   ABOUT US — BRIDE FIRST
+======================================== */
+
+#about .about-person.bride {
+    order: 1;
+}
+
+#about .about-ampersand {
+    order: 2;
+}
+
+#about .about-person.groom {
+    order: 3;
+}
+
+/* ========================================
+   COMPACT CONTINUOUS MOBILE SECTIONS
+======================================== */
+
+@media (max-width: 600px) {
+
+    #countdown,
+    #about,
+    #events,
+    #venue,
+    #gallery,
+    #invitation-message,
+    #final {
+
+        min-height: 30svh;
+    }
+
+}
+
+/* ========================================
+   ABOUT — COMPACT MOBILE HEIGHT
+======================================== */
+
+@media (max-width: 600px) {
+
+    #about {
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+    .about-header {
+        margin-bottom: 35px;
+    }
+
+    .about-editorial {
+        min-height: 650px;
+    }
+
+}
+
+/* ========================================
+   ABOUT — MOBILE REBUILD
+======================================== */
+
+@media (max-width: 600px) {
+
+    #about {
+
+        min-height: auto;
+
+        padding-top: 55px;
+        padding-bottom: 70px;
+    }
+
+
+    .about-header {
+
+        margin-bottom: 35px;
+    }
+
+
+    .about-editorial {
+
+        position: relative;
+
+        width: 100%;
+
+        min-height: auto;
+
+        margin: 0;
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 55px;
+    }
+
+
+    .about-person {
+
+        position: relative;
+
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+
+        width: 100%;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 22px;
+
+        flex-direction: row !important;
+    }
+
+
+    .about-person.bride {
+
+        flex-direction: row !important;
+    }
+
+
+    .about-photo {
+
+        width: 45%;
+
+        flex-shrink: 0;
+    }
+
+
+    .about-details {
+
+        width: 55%;
+
+        min-width: 0;
+    }
+
+
+    .about-ampersand {
+
+        position: absolute;
+
+        left: 50%;
+
+        top: 50%;
+
+        transform:
+            translate(-50%, -50%);
+
+        z-index: 5;
+    }
+
+    .person-name {
+
+        font-size:
+            clamp(2rem, 9vw, 3.2rem);
+
+        line-height: 0.88;
+
+        letter-spacing: -0.04em;
+
+        margin: 0;
+    }
+
+    .person-line {
+
+        display: block;
+
+        width: 58px;
+
+        height: 1px;
+
+        margin-top: 18px;
+
+        margin-bottom: 18px;
+
+        background: var(--olive);
+
+        position: relative;
+    }
+
+
+    .person-line::after {
+
+        content: "";
+
+        position: absolute;
+
+        right: 0;
+
+        top: 50%;
+
+        width: 7px;
+
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: var(--olive);
+
+        transform:
+            translateY(-50%);
+    }
+
+}
+
+/* ========================================
+   COUPLE — COMPACT EDITORIAL LAYOUT
+======================================== */
+
+#couple {
+    min-height: 82svh;
+
+    padding:
+        clamp(55px, 7vh, 85px) 24px clamp(45px, 6vh, 70px);
+}
+
+
+/* ----------------------------------------
+   HEADER
+---------------------------------------- */
+
+#couple .couple-label {
+    margin-bottom: 12px;
+}
+
+.couple-intro {
+    margin-bottom: 28px;
+}
+
+
+/* ----------------------------------------
+   PHOTO COMPOSITION
+---------------------------------------- */
+
+.couple-gallery {
+    width: min(100%, 700px);
+
+    height: clamp(390px, 52vw, 520px);
+
+    margin-bottom: 18px;
+}
+
+
+/* Main photo */
+
+.couple-photo-main {
+    left: 8%;
+
+    width: min(54%, 390px);
+}
+
+
+/* Secondary photo */
+
+.couple-photo-secondary {
+    top: 17%;
+
+    right: 8%;
+
+    width: min(37%, 270px);
+}
+
+
+/* ----------------------------------------
+   NAMES
+---------------------------------------- */
+
+.couple-names {
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* Each name becomes intentionally two lines */
+
+.couple-name-bride,
+.couple-name-groom {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    font-size:
+        clamp(3rem, 6vw, 5.5rem);
+
+    line-height: 0.82;
+
+    letter-spacing: -0.045em;
+}
+
+
+/* ----------------------------------------
+   AMPERSAND
+---------------------------------------- */
+
+.couple-ampersand {
+    margin: 13px 0;
+
+    font-size:
+        clamp(1.6rem, 3vw, 2.5rem);
+}
+
+
+/* ----------------------------------------
+   DIVIDER
+---------------------------------------- */
+
+.couple-divider {
+    margin:
+        20px 0 14px;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    #couple {
+        min-height: auto;
+
+        padding:
+            48px 16px 55px;
+    }
+
+
+    #couple .couple-label {
+        margin-bottom: 10px;
+
+        font-size: 0.56rem;
+    }
+
+
+    .couple-intro {
+        max-width: 290px;
+
+        margin-bottom: 22px;
+
+        font-size: 0.7rem;
+
+        line-height: 1.7;
+    }
+
+
+    /* ------------------------------------
+       COMPACT MOBILE PHOTOS
+    ------------------------------------ */
+
+    .couple-gallery {
+
+        width: min(100%, 350px);
+
+        height: 355px;
+
+        margin-bottom: -5px;
+    }
+
+
+    .couple-photo-main {
+
+        left: 2%;
+
+        width: 65%;
+    }
+
+
+    .couple-photo-secondary {
+
+        top: 20%;
+
+        right: 0;
+
+        width: 43%;
+    }
+
+
+    /* ------------------------------------
+       MOBILE NAMES
+    ------------------------------------ */
+
+    .couple-names {
+
+        width: 100%;
+
+        max-width: 330px;
+    }
+
+
+    .couple-name-bride,
+    .couple-name-groom {
+
+        font-size:
+            clamp(2.7rem, 13vw, 4.2rem);
+
+        line-height: 0.82;
+
+        letter-spacing: -0.045em;
+    }
+
+
+    .couple-ampersand {
+
+        margin: 11px 0;
+
+        font-size: 1.45rem;
+    }
+
+
+    /* ------------------------------------
+       DIVIDER + DATE
+    ------------------------------------ */
+
+    .couple-divider {
+
+        margin:
+            18px 0 13px;
+    }
+
+
+    .couple-divider span {
+
+        width: 30px;
+    }
+
+
+    .couple-date {
+
+        font-size: 0.52rem;
+
+        letter-spacing: 0.3em;
+    }
+
+
+    /* Keep decorative butterflies
+       away from the text */
+
+    .couple-name-orbit .couple-butterfly-one {
+
+        left: 1%;
+
+        top: 8%;
+
+        transform: scale(0.65);
+    }
+
+
+    .couple-name-orbit .couple-butterfly-two {
+
+        right: 1%;
+
+        bottom: 8%;
+
+        transform: scale(0.55);
+    }
+}
+
+/* ========================================
+   COUPLE — DESKTOP PHOTO / NAME SPACING
+======================================== */
+
+@media (min-width: 601px) {
+
+    .couple-gallery {
+        height: 575px;
+        margin-bottom: 0;
+    }
+
+}
+
+/* ========================================
+   COUNTDOWN — SCROLL DRAWING FRAME
+======================================== */
+
+.countdown-item {
+    position: relative;
+
+    overflow: visible;
+
+    border: none;
+}
+
+
+/* ========================================
+   SVG FRAME
+======================================== */
+
+.countdown-frame {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+
+/* ========================================
+   FRAME — HIDDEN BEFORE SCROLL
+======================================== */
+
+.countdown-frame rect {
+
+    fill: none;
+
+    stroke: var(--accent);
+
+    stroke-width: 0.8;
+
+    vector-effect: non-scaling-stroke;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+
+    stroke-dasharray: 100;
+
+    stroke-dashoffset: 100;
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(0 0 3px rgba(201, 154, 61, 0.35));
+}
+
+
+/* ========================================
+   DRAW WHEN COUNTDOWN BECOMES VISIBLE
+======================================== */
+
+#countdown.scroll-visible .countdown-item:nth-child(1) .countdown-frame rect {
+
+    animation:
+        countdown-frame-draw 1.5s cubic-bezier(.65, 0, .35, 1) 0s forwards;
+}
+
+
+#countdown.scroll-visible .countdown-item:nth-child(2) .countdown-frame rect {
+
+    animation:
+        countdown-frame-draw 1.5s cubic-bezier(.65, 0, .35, 1) 0.18s forwards;
+}
+
+
+#countdown.scroll-visible .countdown-item:nth-child(3) .countdown-frame rect {
+
+    animation:
+        countdown-frame-draw 1.5s cubic-bezier(.65, 0, .35, 1) 0.36s forwards;
+}
+
+
+#countdown.scroll-visible .countdown-item:nth-child(4) .countdown-frame rect {
+
+    animation:
+        countdown-frame-draw 1.5s cubic-bezier(.65, 0, .35, 1) 0.54s forwards;
+}
+
+
+/* ========================================
+   ACTUAL BORDER DRAWING
+======================================== */
+
+@keyframes countdown-frame-draw {
+
+    0% {
+
+        stroke-dashoffset: 100;
+
+        opacity: 0;
+    }
+
+    10% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        stroke-dashoffset: 0;
+
+        opacity: 1;
+    }
+}
+
+
+/* ========================================
+   CONTENT ABOVE FRAME
+======================================== */
+
+.countdown-item>span,
+.countdown-item>small {
+
+    position: relative;
+
+    z-index: 3;
+}
+
+
+/* ========================================
+   SOFT GOLD GLOW
+======================================== */
+
+#countdown.scroll-visible .countdown-item:nth-child(1) .countdown-frame rect {
+
+    animation:
+        countdown-frame-draw,
+        countdown-frame-glow;
+
+    animation-duration:
+        1.5s,
+        3s;
+
+    animation-delay:
+        0s,
+        1.5s;
+
+    animation-timing-function:
+        cubic-bezier(.65, 0, .35, 1),
+        ease-in-out;
+
+    animation-iteration-count:
+        1,
+        infinite;
+
+    animation-fill-mode:
+        forwards,
+        both;
+}
+
+
+#countdown.scroll-visible .countdown-item:nth-child(2) .countdown-frame rect {
+
+    animation:
+        countdown-frame-draw,
+        countdown-frame-glow;
+
+    animation-duration:
+        1.5s,
+        3s;
+
+    animation-delay:
+        0.18s,
+        1.68s;
+
+    animation-timing-function:
+        cubic-bezier(.65, 0, .35, 1),
+        ease-in-out;
+
+    animation-iteration-count:
+        1,
+        infinite;
+
+    animation-fill-mode:
+        forwards,
+        both;
+}
+
+
+#countdown.scroll-visible .countdown-item:nth-child(3) .countdown-frame rect {
+
+    animation:
+        countdown-frame-draw,
+        countdown-frame-glow;
+
+    animation-duration:
+        1.5s,
+        3s;
+
+    animation-delay:
+        0.36s,
+        1.86s;
+
+    animation-timing-function:
+        cubic-bezier(.65, 0, .35, 1),
+        ease-in-out;
+
+    animation-iteration-count:
+        1,
+        infinite;
+
+    animation-fill-mode:
+        forwards,
+        both;
+}
+
+
+#countdown.scroll-visible .countdown-item:nth-child(4) .countdown-frame rect {
+
+    animation:
+        countdown-frame-draw,
+        countdown-frame-glow;
+
+    animation-duration:
+        1.5s,
+        3s;
+
+    animation-delay:
+        0.54s,
+        2.04s;
+
+    animation-timing-function:
+        cubic-bezier(.65, 0, .35, 1),
+        ease-in-out;
+
+    animation-iteration-count:
+        1,
+        infinite;
+
+    animation-fill-mode:
+        forwards,
+        both;
+}
+
+
+/* ========================================
+   GLOW ANIMATION
+======================================== */
+
+@keyframes countdown-frame-glow {
+
+    0%,
+    100% {
+
+        filter:
+            drop-shadow(0 0 2px rgba(201, 154, 61, 0.20));
+    }
+
+    50% {
+
+        filter:
+            drop-shadow(0 0 9px rgba(218, 166, 66, 0.65));
+    }
+}
+
+
+/* ========================================
+   MOBILE FRAME
+======================================== */
+
+@media (max-width: 600px) {
+
+    .countdown-frame rect {
+
+        stroke-width: 0.9;
+    }
+
+}
+
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .countdown-frame rect {
+
+        animation: none !important;
+
+        stroke-dashoffset: 0;
+
+        opacity: 1;
+    }
+
+}
+
+/* ========================================
+   CALENDAR BUTTON — KEEP SHARP
+======================================== */
+
+.scroll-element.calendar-button {
+    --scroll-blur: 0px !important;
+
+    filter: blur(0) !important;
+}
+
+/* ========================================
+   MUSIC PLAYER — FINAL OVERRIDE
+   REMOVE UNWANTED FRAME
+======================================== */
+
+.music-player {
+    border: none !important;
+
+    outline: none !important;
+
+    box-sizing: border-box;
+
+    background:
+        rgba(255, 255, 255, 0.92);
+
+    overflow: hidden;
+}
+
+
+/* Remove any inherited pseudo-elements */
+
+.music-player::before,
+.music-player::after {
+
+    content: none !important;
+
+    display: none !important;
+
+}
+
+
+/* Make sure the buttons don't create outlines */
+
+.music-player button {
+
+    outline: none;
+
+    box-sizing: border-box;
+}
+
+
+/* Remove browser focus outline */
+
+.music-player button:focus {
+
+    outline: none;
+}
+
+
+/* Keep a subtle focus indication only when keyboard
+   navigation is actually being used */
+
+.music-player button:focus-visible {
+
+    outline:
+        2px solid
+        rgba(201, 163, 84, 0.45);
+
+    outline-offset: 2px;
+}
+
+
+/* ========================================
+   IMPORTANT
+   MUSIC PLAYER MUST NOT RECEIVE
+   SCROLL TRANSFORMATIONS
+======================================== */
+
+.music-player {
+
+    position: fixed !important;
+
+    top: 24px !important;
+
+    right: 24px !important;
+
+    left: auto !important;
+
+    bottom: auto !important;
+
+    margin: 0 !important;
+
+    transform: translateY(0) !important;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 600px) {
+
+    .music-player {
+
+        top: 16px !important;
+
+        right: 16px !important;
+
+        left: auto !important;
+
+        bottom: auto !important;
+
+    }
+
+}
+
+/* ========================================
+   ELEGANT PHOTO FRAME
+   DESKTOP + MOBILE
+======================================== */
+
+.opening-photo-frame {
+    border: 1px solid rgba(184, 148, 82, 0.55) !important;
+
+    padding: 7px !important;
+
+    box-sizing: border-box !important;
+
+    background: #f4ebdb !important;
+
+    position: relative !important;
+}
+
+
+/* ========================================
+   INNER FRAME
+======================================== */
+
+.opening-photo-frame::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 7px;
+
+    border: 1px solid rgba(255, 255, 255, 0.75) !important;
+
+    z-index: 3;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   PHOTO
+======================================== */
+
+.opening-photo-frame img {
+    width: 100% !important;
+    height: 100% !important;
+
+    display: block !important;
+
+    object-fit: cover !important;
+
+    position: absolute !important;
+
+    inset: 0 !important;
+
+    transform: none !important;
+}
+
+
+/* ========================================
+   SOFT PHOTO OVERLAY
+======================================== */
+
+.opening-photo-frame::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(244, 235, 219, 0.08);
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* ========================================
+   MOBILE FRAME
+======================================== */
+
+@media (max-width: 600px) {
+
+    .opening-photo-frame {
+        border: 1px solid rgba(184, 148, 82, 0.55) !important;
+
+        padding: 6px !important;
+
+        background: #f4ebdb !important;
+    }
+
+    .opening-photo-frame::before {
+        inset: 6px;
+
+        border: 1px solid rgba(255, 255, 255, 0.75) !important;
+    }
+
+}
